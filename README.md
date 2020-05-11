@@ -4,4 +4,4 @@ Este es el proyecto final de programación estructurada de estudiantes de la car
   - Bryan Cuvi.
   - Sebastián Tamayo.
   
-Es desarrollado en C# .Net framework enfocado a consola utilizando unicamente el paradigma de programación estructurada.
+Es desarrollado en C# .Net framework 4.7.2 enfocado a consola utilizando unicamente el paradigma de programación estructurada.
