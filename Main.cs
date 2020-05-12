@@ -16,10 +16,9 @@ namespace Proyecto_Final_Programación_Estructurada
             string[][] nombresEstudiantes;
             double[][] notasEstudiantes;
             int[][] asistenciasEstudiantes;
-            bool[][] aprobacionEstudiantes;
-
-            // Variables para operaciones con valores temporales.
-            int[] index;
+            string[][] aprobacionEstudiantes;
+            // Variable que establece la cantidad de estudiantes ingresados.
+            int index = 0;
 
             // Variable para gestionar menus.
             int opcion1 = 0, opcion2 = 0, opcion3 = 0;
@@ -27,8 +26,15 @@ namespace Proyecto_Final_Programación_Estructurada
 
             #endregion
 
+            #region Constructores
+
             // Inicializa los jagged array para su uso.
             InicializarValores(out nombresEstudiantes, out notasEstudiantes, out asistenciasEstudiantes, out aprobacionEstudiantes);
+
+            // Inicializa los jagged array con valores preestablecidos para casos de prueba.
+            InicializarValores(ref index ,ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+
+            #endregion
 
             while (opcion1 != 3)
             {
@@ -49,10 +55,22 @@ namespace Proyecto_Final_Programación_Estructurada
                             Console.Clear();
                             switch(opcion2)
                             {
+                                #region Ingresar nuevo estudiante
+
                                 case (1):
+                                    Console.WriteLine("Seccion: Ingresar nuevo estudiante");
+                                    Console.WriteLine("Nota: Si desea cancelar la acción de ingreso de estudiantes presione \"Tab\"");
+                                    
                                     break;
+
+                                #endregion
+
+                                #region Editar estudiante
+
                                 case (2):
                                     break;
+
+                                #endregion
 
                                 #region Eliminar estudiante
 
@@ -68,15 +86,25 @@ namespace Proyecto_Final_Programación_Estructurada
                                         {
                                             #region Busqueda de estudiantes por nombre
 
-                                            case (1):                                               
+                                            case (1):
+                                                
                                                 break;
 
                                             #endregion
 
+                                            #region Busqueda por apellido
+
                                             case (2):
                                                 break;
+
+                                            #endregion
+
+                                            #region Busqueda por nota
+
                                             case (3):
                                                 break;
+
+                                            #endregion
 
                                             #region Busqueda de estudiantes si aprobaron o no.
 
@@ -176,6 +204,21 @@ namespace Proyecto_Final_Programación_Estructurada
             p_notasEstuadiantes = new double[100][];
             p_asistenciaEstudiantes = new int[100][];
             p_aprobacionEstudiantes = new bool[100][];
-        }        
+        }  
+        
+        // Inicializa los valores creando estudiantes para realizar pruebas de validación del programa.
+        static void InicializarValores(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref string[][] p_aprobacionEstudiantes)
+        {
+            IngresoEstudiante(ref p_index, ref p_nombresEstudiantes, ref p_notasEstudiantes, ref p_asistenciaEstudiantes, ref p_aprobacionEstudiantes, "SEBASTIAN", "TAMAYO", 20, 19, 17, true);
+            p_index++;
+            IngresoEstudiante(ref p_index, ref p_nombresEstudiantes, ref p_notasEstudiantes, ref p_asistenciaEstudiantes, ref p_aprobacionEstudiantes, "BRYAN", "CUVI", 16, 20, 20, true);
+            p_index++;
+            IngresoEstudiante(ref p_index, ref p_nombresEstudiantes, ref p_notasEstudiantes, ref p_asistenciaEstudiantes, ref p_aprobacionEstudiantes, "SOFIA", "VILLACIS", 20, 20, 20, true);
+            p_index++;
+            IngresoEstudiante(ref p_index, ref p_nombresEstudiantes, ref p_notasEstudiantes, ref p_asistenciaEstudiantes, ref p_aprobacionEstudiantes, "ARIANA", "SOTOMAYOR", 10, 13, 7, false);
+            p_index++;
+            IngresoEstudiante(ref p_index, ref p_nombresEstudiantes, ref p_notasEstudiantes, ref p_asistenciaEstudiantes, ref p_aprobacionEstudiantes, "SEBASTIAN", "PROAÑO", 16, 3, 19, false);
+            p_index++;
+        }
     }
 }
