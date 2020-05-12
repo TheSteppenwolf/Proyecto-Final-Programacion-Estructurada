@@ -32,13 +32,7 @@ namespace Proyecto_Final_Programación_Estructurada
 
             #endregion
 
-            while (opcion1 != 3)
-            {
-                // Menu inicial de opciones.
-                Console.WriteLine("SEFIAN: Controlador de notas");
-                Console.Write("Escoja la opcion que desea:\n\t1.Gestionar estudiantes.\n\t2.Ver registro.\n\t3.Salir.\nOpcion: "); opcion1 = Convert.ToInt32(Console.ReadLine());
-                Console.Clear();                
-            }
+            
 
             Console.WriteLine("Presione cualquier tecla para salir..."); Console.ReadKey();
         }
@@ -62,3 +56,4 @@ namespace Proyecto_Final_Programación_Estructurada
 
     }
 }
+
