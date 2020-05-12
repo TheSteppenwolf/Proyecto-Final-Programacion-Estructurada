@@ -221,8 +221,8 @@ namespace Proyecto_Final_Programación_Estructurada
             p_index++;
         }
         
-        // Editar todos los datos del estudiante.
-        static void EditarEstudiante(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref string[][] p_aprobacionEstudiantes, string p_nombre, string p_apellido, double p_nota1, double p_nota2, int p_asistencia, bool p_aprobacion)
+        // Ingreso de estudiante nuevo.
+        static void IngresoEstudiante(ref int p_index ,ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref string[][] p_aprobacionEstudiantes, string p_nombre, string p_apellido, double p_nota1, double p_nota2, int p_asistencia, bool p_aprobacion)
         {
             p_nombresEstudiantes[p_index][0] = p_nombre;
             p_nombresEstudiantes[p_index][1] = p_apellido;
@@ -231,6 +231,7 @@ namespace Proyecto_Final_Programación_Estructurada
             p_asistenciaEstudiantes[p_index][0] = p_asistencia;
             if (p_aprobacion) p_aprobacionEstudiantes[p_index][0] = "APROBADO";
             else p_aprobacionEstudiantes[p_index][0] = "REPROBADO";
+            p_index++;
         }
     }
 }
