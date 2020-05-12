@@ -68,35 +68,7 @@ namespace Proyecto_Final_Programación_Estructurada
                                         {
                                             #region Busqueda de estudiantes por nombre
 
-                                            case (1):
-                                                do
-                                                {
-                                                    Console.WriteLine("Ingrese el nombre del estudiante: "); opcionString1 = Console.ReadLine().Trim().ToUpper();
-                                                    BusquedaEstudiante(nombresEstudiantes, opcionString1, out index);
-                                                    // Entorno amigable con el usuario.
-                                                    Console.WriteLine("Buscando...");
-                                                    for (int i = 0; i < 5; i++) { for (int j = 0; j < i + 1; j++) Console.Write("."); } Console.WriteLine();
-                                                    // Validación si no encontro a algún estudiante con el nombre de busqueda.
-                                                    if (index[0] == -1)
-                                                    {
-                                                        Console.WriteLine($"No se encontro ningun estudiante con el nombre {opcionString1}.");
-                                                    }
-                                                    else
-                                                    {
-                                                        
-                                                    }
-                                                    do
-                                                    {
-                                                        Console.WriteLine("Desea realizar una nueva busqueda por nombre? (S/N): "); opcionString2 = Console.ReadLine();
-                                                        // Validación de ingreso correcto de información.
-                                                        if(opcionString2 != "S" & opcionString2 != "N")
-                                                        {
-                                                            Console.WriteLine("Error: Opcion ingresada no valida.");
-                                                            Console.WriteLine("Presione cualquier tecla para continuar...");
-                                                            Console.ReadKey(); Console.Clear();
-                                                        }
-                                                    } while (opcionString2 != "S" & opcionString2 != "N");
-                                                } while (opcionString2 != "N");
+                                            case (1):                                               
                                                 break;
 
                                             #endregion
@@ -204,21 +176,6 @@ namespace Proyecto_Final_Programación_Estructurada
             p_notasEstuadiantes = new double[100][];
             p_asistenciaEstudiantes = new int[100][];
             p_aprobacionEstudiantes = new bool[100][];
-        }
-
-        // Función que devuelve un array de enteros con los indices de cada estudiante que cumpla con al busqueda del nombre, si no encuentra ninguno devuelve un uno negativo.
-        static void BusquedaEstudiante(string[][] p_nombresEstudiantes, string p_nombreEstudiante, out int[] p_indexer)
-        {
-            int tempCounter = 0;
-            p_indexer = new int[p_nombresEstudiantes.Length];            
-            for(int i = 0; i < p_nombresEstudiantes.Length; i++)
-            {
-                if (p_nombresEstudiantes[i][0] == p_nombreEstudiante) { p_indexer[i] = i; tempCounter++; }
-            }
-            if(tempCounter == 0)
-            {
-                p_indexer[0] = -1;
-            }
-        }
+        }        
     }
 }
