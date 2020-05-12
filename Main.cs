@@ -32,7 +32,7 @@ namespace Proyecto_Final_Programación_Estructurada
             InicializarValores(out nombresEstudiantes, out notasEstudiantes, out asistenciasEstudiantes, out aprobacionEstudiantes);
 
             // Inicializa los jagged array con valores preestablecidos para casos de prueba.
-            InicializarValores(ref index ,ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+            //InicializarValores(ref index ,ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
 
             #endregion
 
@@ -154,6 +154,7 @@ namespace Proyecto_Final_Programación_Estructurada
                                         Console.WriteLine("Presione cualquier tecla para continuar...");
                                         Console.ReadKey(); Console.Clear();
                                     }
+                                    opcionString1 = null;
                                     break;
 
                                 #endregion
@@ -170,6 +171,7 @@ namespace Proyecto_Final_Programación_Estructurada
                                     break;
                             }
                         }
+                        opcion2 = 0;
                         break;
 
                     #endregion
@@ -197,16 +199,20 @@ namespace Proyecto_Final_Programación_Estructurada
             Console.WriteLine("Presione cualquier tecla para salir..."); Console.ReadKey();
         }
 
+        #region Métodos
+
+        #region Inicialización de valores inciales para casos de prueba y para su uso.
+
         // Inicializa los valores de que almacenan a todos los esutdiantes para su uso o para resetear el registro.
-        static void InicializarValores(out string[][] p_nombresEstudiantes, out double[][] p_notasEstuadiantes, out int[][] p_asistenciaEstudiantes, out bool[][] p_aprobacionEstudiantes)
+        static void InicializarValores(out string[][] p_nombresEstudiantes, out double[][] p_notasEstudiantes, out int[][] p_asistenciaEstudiantes, out string[][] p_aprobacionEstudiantes)
         {
             p_nombresEstudiantes = new string[100][];
-            p_notasEstuadiantes = new double[100][];
+            p_notasEstudiantes = new double[100][];
             p_asistenciaEstudiantes = new int[100][];
-            p_aprobacionEstudiantes = new bool[100][];
-        }  
-        
-        // Inicializa los valores creando estudiantes para realizar pruebas de validación del programa.
+            p_aprobacionEstudiantes = new string[100][];
+        }
+
+        /*// Inicializa los valores creando estudiantes para realizar pruebas de validación del programa.
         static void InicializarValores(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref string[][] p_aprobacionEstudiantes)
         {
             IngresoEstudiante(ref p_index, ref p_nombresEstudiantes, ref p_notasEstudiantes, ref p_asistenciaEstudiantes, ref p_aprobacionEstudiantes, "SEBASTIAN", "TAMAYO", 20, 19, 17, true);
@@ -219,19 +225,11 @@ namespace Proyecto_Final_Programación_Estructurada
             p_index++;
             IngresoEstudiante(ref p_index, ref p_nombresEstudiantes, ref p_notasEstudiantes, ref p_asistenciaEstudiantes, ref p_aprobacionEstudiantes, "SEBASTIAN", "PROAÑO", 16, 3, 19, false);
             p_index++;
-        }
-        
-        // Ingreso de estudiante nuevo.
-        static void IngresoEstudiante(ref int p_index ,ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref string[][] p_aprobacionEstudiantes, string p_nombre, string p_apellido, double p_nota1, double p_nota2, int p_asistencia, bool p_aprobacion)
-        {
-            p_nombresEstudiantes[p_index][0] = p_nombre;
-            p_nombresEstudiantes[p_index][1] = p_apellido;
-            p_notasEstudiantes[p_index][0] = p_nota1;
-            p_notasEstudiantes[p_index][1] = p_nota2;
-            p_asistenciaEstudiantes[p_index][0] = p_asistencia;
-            if (p_aprobacion) p_aprobacionEstudiantes[p_index][0] = "APROBADO";
-            else p_aprobacionEstudiantes[p_index][0] = "REPROBADO";
-            p_index++;
-        }
+        }*/
+
+        #endregion        
+
+        #endregion
+
     }
 }
