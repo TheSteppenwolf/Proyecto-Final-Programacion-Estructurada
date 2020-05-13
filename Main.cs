@@ -92,7 +92,8 @@ namespace Proyecto_Final_Programación_Estructurada
 
                     // En caso de seleccionar opción no válida.
                     default:
-                        Console.WriteLine("Error: Opcion no valida.");
+                        Procesando();
+                        Console.WriteLine("Error: Opcion no valida.");                        
                         Console.WriteLine("\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
                         break;                   
                 }
@@ -245,7 +246,7 @@ namespace Proyecto_Final_Programación_Estructurada
             #region Impresión del formato de presentación de los estudiantes.
 
             // Impresión con formato amigable para el usuario.
-            // Se evalua la tabulación dependiendo del string más largo.
+            // Se evalua la tabulación dependiendo del string más largo, si no es del estudiante se toma de su identificador, puede ser "Nombre" como cualquier otro.
             if (MayorNombre(p_index, p_nombresEstudiantes) > "Nombre".Length) counterX = MayorNombre(p_index, p_nombresEstudiantes) + 8;
             else counterX = "Nombre".Length + 8;
             Console.Write("Nombre");
@@ -280,7 +281,7 @@ namespace Proyecto_Final_Programación_Estructurada
                 else temp = "REPROBADO";
 
                 // Impresión con formato amigable para el usuario.
-                // Se evalua la tabulación dependiendo del string más largo.
+                // Se evalua la tabulación dependiendo del string más largo, si no es del estudiante se toma de su identificador, puede ser "Nombre" como cualquier otro.
                 if (MayorNombre(p_index, p_nombresEstudiantes) > "Nombre".Length) counterX = MayorNombre(p_index, p_nombresEstudiantes) + 8;
                 else counterX = "Nombre".Length + 8;
                 Console.Write($"{p_nombresEstudiantes[i][0]}");
