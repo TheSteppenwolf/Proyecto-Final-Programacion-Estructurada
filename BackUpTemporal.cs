@@ -225,12 +225,15 @@ namespace Proyecto_Final_Programación_Estructurada
 
         static void GetEstudiantes(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
         {
+            string temp;
             Console.WriteLine("Nombre\t\tApellido\t\tPrueba\t\tExamen\t\tAsistencia\t\tResultado");
             for(int i = 0; i <= p_index - 1; i++)
             {
-                if (i % 2 == 0) { Console.BackgroundColor = ConsoleColor.White; Console.ForegroundColor = ConsoleColor.Black; }
+                if (i % 2 == 0) { Console.BackgroundColor = ConsoleColor.DarkGray; Console.ForegroundColor = ConsoleColor.Black; }
                 else { Console.BackgroundColor = ConsoleColor.Black; Console.ForegroundColor = ConsoleColor.White; }
-                Console.WriteLine($"{p_nombresEstudiantes[i][0]}\t\t{p_nombresEstudiantes[i][1]}\t\t\t{p_notasEstudiantes[i][0]}\t\t{p_notasEstudiantes[i][1]}\t\t{p_asistenciaEstudiantes[i][0]}\t\t\t{p_aprobacionEstudiantes[i][0]}");
+                if (p_aprobacionEstudiantes[i][0] == true) temp = "APROBADO";
+                else temp = "REPROBADO";
+                Console.WriteLine($"{p_nombresEstudiantes[i][0]}\t\t{p_nombresEstudiantes[i][1]}\t\t\t{p_notasEstudiantes[i][0]}\t\t{p_notasEstudiantes[i][1]}\t\t{p_asistenciaEstudiantes[i][0]}\t\t\t{temp}");
             }
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
