@@ -22,6 +22,7 @@ namespace Proyecto_Final_Programación_Estructurada
 
             // Variable para gestionar menus.
             int opcion1 = 0;
+            string opcionString1 = null;
 
             #endregion
 
@@ -34,45 +35,46 @@ namespace Proyecto_Final_Programación_Estructurada
 
             #region Menu de desplegue de información
             
-            while(opcion1 != 5)
+
+            while(opcionString1 != "5")
             {
                 Console.WriteLine("SEFIAN: Controlador de notas.");
                 Console.WriteLine("Escoja la opción que desea para la visualizacion del registro:");
-                Console.WriteLine("\tPor Nombre en forma ascendente.\n\t2.Por apellido en forma descendente.\n\t3.Por nota de la prueba en forma ascendente.\n\t4.Por nota del examen de forma descendente.\n\t5.Salir.");
-                Console.Write("Opcion: "); opcion1 = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("\t1.Por Nombre en forma ascendente.\n\t2.Por apellido en forma descendente.\n\t3.Por nota de la prueba en forma ascendente.\n\t4.Por nota del examen de forma descendente.\n\t5.Salir.");
+                Console.Write("Opcion: "); opcionString1 = Console.ReadLine();
                 Console.Clear();
-                switch(opcion1)
+                switch(opcionString1)
                 {
                     #region Por nombre de manera ascendente
 
-                    case 1:
+                    case "1":
                         break;
 
                     #endregion
 
                     #region Por apellido de manera descendente
 
-                    case 2:
+                    case "2":
                         break;
 
                     #endregion
 
                     #region Por nota de la prueba de manera ascendente
 
-                    case 3:
+                    case "3":
                         break;
 
                     #endregion
 
                     #region Por nota del examen de manera descendente
 
-                    case 4:
+                    case "4":
                         break;
 
                     #endregion                  
 
                     // Salida del programa. 
-                    case 5:
+                    case "5":
                         Console.WriteLine("Cerrando el programa...");
                         Procesando();
                         Console.WriteLine("Gracias por utilizar nuestro programa!");
