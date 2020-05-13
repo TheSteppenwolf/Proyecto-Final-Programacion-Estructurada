@@ -30,13 +30,14 @@ namespace Proyecto_Final_Programación_Estructurada
 
             // Inicializa los jagged array para su uso.
             InicializarValores(out nombresEstudiantes, out notasEstudiantes, out asistenciasEstudiantes, out aprobacionEstudiantes);
+            InicializarValores(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
 
             #endregion
 
             #region Menu de desplegue de información
-            
 
-            while(opcionString1 != "5")
+
+            while (opcionString1 != "5")
             {
                 Console.WriteLine("SEFIAN: Controlador de notas.");
                 Console.WriteLine("Escoja la opción que desea para la visualizacion del registro:");
@@ -62,6 +63,8 @@ namespace Proyecto_Final_Programación_Estructurada
                     #region Por nota de la prueba de manera ascendente
 
                     case "3":
+                        // Se llama a la función para el ordenamiento según lo requerido.
+                        PruebaAscendente(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         break;
 
                     #endregion
@@ -69,6 +72,8 @@ namespace Proyecto_Final_Programación_Estructurada
                     #region Por nota del examen de manera descendente
 
                     case "4":
+                        // Se llama a la función para el ordenamiento según lo requerido.
+                        ExamenDescendente(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         break;
 
                     #endregion                  
@@ -104,6 +109,22 @@ namespace Proyecto_Final_Programación_Estructurada
             p_notasEstudiantes = new double[100][];
             p_asistenciaEstudiantes = new int[100][];
             p_aprobacionEstudiantes = new bool[100][];
+        }
+
+        // Crea estudiantes para casos de prueba.
+        static void InicializarValores(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
+        {
+            string tempNombre = "NOMBRE";
+            string tempApellido = "APELLIDO";
+            double tempPrueba = 8, tempExamen = 10;
+            for(int i = 0; i < 6; i++)
+            {
+                p_nombresEstudiantes[p_index] = new string[] { tempNombre.Substring(0, i + 1), tempApellido.Substring(0, i + 1) };
+                p_notasEstudiantes[p_index] = new double[] { ++tempPrueba, ++tempExamen };
+                p_asistenciaEstudiantes[p_index] = new int[] { (int)tempPrueba + 2 };
+                p_aprobacionEstudiantes[p_index] = new bool[] { true };
+                p_index++;
+            }
         }
 
         #endregion
