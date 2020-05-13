@@ -119,17 +119,31 @@ namespace Proyecto_Final_Programación_Estructurada
         // Crea estudiantes para casos de prueba.
         static void InicializarValores(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
         {
-            string tempNombre = "SBSNOM";
-            string tempApellido = "SBSAPE";
-            double tempPrueba = 8, tempExamen = 10;
-            for(int i = 0; i < 6; i++)
-            {
-                p_nombresEstudiantes[p_index] = new string[] { tempNombre.Substring(0, i + 1), tempApellido.Substring(0, i + 1) };
-                p_notasEstudiantes[p_index] = new double[] { ++tempPrueba, ++tempExamen };
-                p_asistenciaEstudiantes[p_index] = new int[] { (int)tempPrueba + 2 };
-                p_aprobacionEstudiantes[p_index] = new bool[] { true };
-                p_index++;
-            }
+            p_nombresEstudiantes[0] = new string[] { "SEBASTIAN", "TAMAYO" };
+            p_notasEstudiantes[0] = new double[] { 19, 17 };
+            p_asistenciaEstudiantes[0] = new int[] { 18 };
+            p_aprobacionEstudiantes[0] = new bool[] { true };
+            p_index++;
+            p_nombresEstudiantes[1] = new string[] { "BRYAN", "CUVI" };
+            p_notasEstudiantes[1] = new double[] { 18, 19 };
+            p_asistenciaEstudiantes[1] = new int[] { 17 };
+            p_aprobacionEstudiantes[1] = new bool[] { true };
+            p_index++;
+            p_nombresEstudiantes[2] = new string[] { "SOFIA", "VILLACIS" };
+            p_notasEstudiantes[2] = new double[] { 20, 20 };
+            p_asistenciaEstudiantes[2] = new int[] { 20 };
+            p_aprobacionEstudiantes[2] = new bool[] { true };
+            p_index++;
+            p_nombresEstudiantes[3] = new string[] { "VLADIMIR", "ESTEVENSON" };
+            p_notasEstudiantes[3] = new double[] { 10, 15 };
+            p_asistenciaEstudiantes[3] = new int[] { 12 };
+            p_aprobacionEstudiantes[3] = new bool[] { false };
+            p_index++;
+            p_nombresEstudiantes[4] = new string[] { "VERONICA", "ALTAMIRANO" };
+            p_notasEstudiantes[4] = new double[] { 15, 17 };
+            p_asistenciaEstudiantes[4] = new int[] { 20 };
+            p_aprobacionEstudiantes[4] = new bool[] { false };
+            p_index++;
         }
 
         #endregion
@@ -167,11 +181,11 @@ namespace Proyecto_Final_Programación_Estructurada
 
                         // Renovar la posición del mayor.
                         p_nombresEstudiantes[j + 1][0] = tempNombre;
-                        p_nombresEstudiantes[j + 1][0] = tempApellido;
+                        p_nombresEstudiantes[j + 1][1] = tempApellido;
                         p_notasEstudiantes[j + 1][0] = tempPrueba;
-                        p_notasEstudiantes[j + 1][1] = tempPrueba;
+                        p_notasEstudiantes[j + 1][1] = tempExamen;
                         p_asistenciaEstudiantes[j + 1][0] = tempAsistencias;
-                        p_aprobacionEstudiantes[j][0] = tempAprobacion;
+                        p_aprobacionEstudiantes[j + 1][0] = tempAprobacion;
                     }
                 }
             }
@@ -208,11 +222,11 @@ namespace Proyecto_Final_Programación_Estructurada
 
                         // Renovar la posición del mayor.
                         p_nombresEstudiantes[j + 1][0] = tempNombre;
-                        p_nombresEstudiantes[j + 1][0] = tempApellido;
+                        p_nombresEstudiantes[j + 1][1] = tempApellido;
                         p_notasEstudiantes[j + 1][0] = tempPrueba;
-                        p_notasEstudiantes[j + 1][1] = tempPrueba;
+                        p_notasEstudiantes[j + 1][1] = tempExamen;
                         p_asistenciaEstudiantes[j + 1][0] = tempAsistencias;
-                        p_aprobacionEstudiantes[j][0] = tempAprobacion;
+                        p_aprobacionEstudiantes[j + 1][0] = tempAprobacion;
                     }
                 }
             }
@@ -222,21 +236,79 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #region Impresión de los estudiantes
 
+        // Imprime a todos los estudiantes en un respectivo formato tipo tabla.
         static void GetEstudiantes(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
         {
             string temp;
-            Console.WriteLine("Nombre\t\tApellido\t\tPrueba\t\tExamen\t\tAsistencia\t\tResultado");
-            for(int i = 0; i <= p_index - 1; i++)
+            int counterX, counterY = 0;
+
+            #region Impresión del formato de presentación de los estudiantes.
+
+            // Impresión con formato amigable para el usuario.
+            // Se evalua la tabulación dependiendo del string más largo.
+            if (MayorNombre(p_index, p_nombresEstudiantes) > "Nombre".Length) counterX = MayorNombre(p_index, p_nombresEstudiantes) + 8;
+            else counterX = "Nombre".Length + 8;
+            Console.Write("Nombre");
+            // Se coloca en la posición deseada para respetar un mismo margen.
+            Console.SetCursorPosition(counterX, counterY);
+            if (MayorApellido(p_index, p_nombresEstudiantes) > "Apellido".Length) counterX += MayorApellido(p_index, p_nombresEstudiantes) + 8;
+            else counterX += "Apellido".Length + 8;
+            Console.Write("Apellido");
+            Console.SetCursorPosition(counterX, counterY);
+            counterX += "Prueba".Length + 8;
+            Console.Write("Prueba");
+            Console.SetCursorPosition(counterX, counterY);
+            counterX += "Examen".Length + 8;
+            Console.Write("Examen");
+            Console.SetCursorPosition(counterX, counterY);
+            counterX += "Asistencia".Length + 8;
+            Console.Write("Asistencia");
+            Console.SetCursorPosition(counterX, counterY);
+            Console.WriteLine("Resultado");
+            // Se aumenta una linea al contador de lineas.
+            counterY++;
+
+            #endregion
+
+            #region Impresión los estudiantes
+
+            // Impresión de cada estudiante.
+            for (int i = 0; i <= p_index - 1; i++)
             {
-                if (i % 2 == 0) { Console.BackgroundColor = ConsoleColor.DarkGray; Console.ForegroundColor = ConsoleColor.Black; }
-                else { Console.BackgroundColor = ConsoleColor.Black; Console.ForegroundColor = ConsoleColor.White; }
+                LineaPintada(i, counterY);
                 if (p_aprobacionEstudiantes[i][0] == true) temp = "APROBADO";
                 else temp = "REPROBADO";
-                Console.WriteLine($"{p_nombresEstudiantes[i][0]}\t\t{p_nombresEstudiantes[i][1]}\t\t\t{p_notasEstudiantes[i][0]}\t\t{p_notasEstudiantes[i][1]}\t\t{p_asistenciaEstudiantes[i][0]}\t\t\t{temp}  ");
+
+                // Impresión con formato amigable para el usuario.
+                // Se evalua la tabulación dependiendo del string más largo.
+                if (MayorNombre(p_index, p_nombresEstudiantes) > "Nombre".Length) counterX = MayorNombre(p_index, p_nombresEstudiantes) + 8;
+                else counterX = "Nombre".Length + 8;
+                Console.Write($"{p_nombresEstudiantes[i][0]}");
+                // Se coloca en la posición deseada para respetar un mismo margen.
+                Console.SetCursorPosition(counterX, counterY);
+                if (MayorApellido(p_index, p_nombresEstudiantes) > "Apellido".Length) counterX += MayorApellido(p_index, p_nombresEstudiantes) + 8;
+                else counterX += "Apellido".Length + 8;
+                Console.Write($"{p_nombresEstudiantes[i][1]}");                
+                Console.SetCursorPosition(counterX, counterY);
+                counterX += "Prueba".Length + 8;
+                Console.Write($"{p_notasEstudiantes[i][0]}");
+                Console.SetCursorPosition(counterX, counterY);
+                counterX += "Examen".Length + 8;
+                Console.Write($"{p_notasEstudiantes[i][1]}");
+                Console.SetCursorPosition(counterX, counterY);
+                counterX += "Asistencias".Length + 7;
+                Console.Write($"{p_asistenciaEstudiantes[i][0]}");
+                Console.SetCursorPosition(counterX, counterY);                
+                Console.WriteLine($"{temp}");
+                // Se aumenta una linea al contador de lineas.
+                counterY++;
             }
+
+            #endregion
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
-        }
+        }                
 
         #endregion
 
@@ -250,6 +322,43 @@ namespace Proyecto_Final_Programación_Estructurada
                 for (int j = 0; j < i + 1; j++) Console.Write(".");
                 Console.WriteLine();
             }           
+        }
+
+        // Devuelve el largo del nombre más largo de los estudiantes.
+        static int MayorNombre(int p_index ,string[][] p_nombresEstudiantes)
+        {
+            int temp = 0;
+            for(int i = 0; i < p_index; i++)
+            {
+                if(p_nombresEstudiantes[i][0].Length > temp)
+                {
+                    temp = p_nombresEstudiantes[i][0].Length;
+                }
+            }
+            return temp;
+        }
+
+        // Devuelve el largo del apellido más largo de los estudiantes.
+        static int MayorApellido(int p_index, string[][] p_nombresEstudiantes)
+        {
+            int temp = 0;
+            for (int i = 0; i < p_index; i++)
+            {
+                if (p_nombresEstudiantes[i][1].Length > temp)
+                {
+                    temp = p_nombresEstudiantes[i][1].Length;
+                }
+            }
+            return temp;
+        }
+
+        // Pinta una linea de 110 caracteres y devuelve el cursor al inicio de la misma.
+        static void LineaPintada(int p_index, int p_pointY)
+        {
+            if (p_index % 2 == 0) { Console.BackgroundColor = ConsoleColor.Gray; Console.ForegroundColor = ConsoleColor.Black; }
+            else { Console.BackgroundColor = ConsoleColor.Black; Console.ForegroundColor = ConsoleColor.White; }
+            for (int i = 0; i < 110; i++) Console.Write(" ");
+            Console.SetCursorPosition(0, p_pointY);
         }
 
         #endregion
