@@ -16,7 +16,7 @@ namespace Proyecto_Final_Programación_Estructurada
             string[][] nombresEstudiantes;
             double[][] notasEstudiantes;
             int[][] asistenciasEstudiantes;
-            string[][] aprobacionEstudiantes;
+            bool[][] aprobacionEstudiantes;
             // Variable que establece la cantidad de estudiantes ingresados.
             int index = 0;
 
@@ -98,12 +98,98 @@ namespace Proyecto_Final_Programación_Estructurada
         #region Inicialización de valores inciales para casos de prueba y para su uso.
 
         // Inicializa los valores de que almacenan a todos los esutdiantes para su uso o para resetear el registro.
-        static void InicializarValores(out string[][] p_nombresEstudiantes, out double[][] p_notasEstudiantes, out int[][] p_asistenciaEstudiantes, out string[][] p_aprobacionEstudiantes)
+        static void InicializarValores(out string[][] p_nombresEstudiantes, out double[][] p_notasEstudiantes, out int[][] p_asistenciaEstudiantes, out bool[][] p_aprobacionEstudiantes)
         {
             p_nombresEstudiantes = new string[100][];
             p_notasEstudiantes = new double[100][];
             p_asistenciaEstudiantes = new int[100][];
-            p_aprobacionEstudiantes = new string[100][];
+            p_aprobacionEstudiantes = new bool[100][];
+        }
+
+        #endregion
+
+        #region Ordenamiento de los datos del estudiante
+
+        // Ordena de manera ascendente a los estudiantes considerando su nota de la prueba.
+        static void PruebaAscendente(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
+        {
+            string tempNombre, tempApellido;
+            double tempPrueba, tempExamen;
+            int tempAsistencias;
+            bool tempAprobacion;
+            for(int i = 0; i < p_index; i++)
+            {
+                for(int j = 0; j < p_index - 1; j++)
+                {
+                    if(p_notasEstudiantes[j][0] > p_notasEstudiantes[j + 1][0])
+                    {
+                        // Inicializar variables temporales.
+                        tempNombre = p_nombresEstudiantes[j][0];
+                        tempApellido = p_nombresEstudiantes[j][1];
+                        tempPrueba = p_notasEstudiantes[j][0];
+                        tempExamen = p_notasEstudiantes[j][1];
+                        tempAsistencias = p_asistenciaEstudiantes[j][0];
+                        tempAprobacion = p_aprobacionEstudiantes[j][0];
+
+                        // Renovar la posición del menor en la posición del mayor.                        
+                        p_nombresEstudiantes[j][0] = p_nombresEstudiantes[j + 1][0];
+                        p_nombresEstudiantes[j][1] = p_nombresEstudiantes[j + 1][1];
+                        p_notasEstudiantes[j][0] = p_notasEstudiantes[j + 1][0];
+                        p_notasEstudiantes[j][1] = p_notasEstudiantes[j + 1][1];
+                        p_asistenciaEstudiantes[j][0] = p_asistenciaEstudiantes[j + 1][0];
+                        p_aprobacionEstudiantes[j][0] = p_aprobacionEstudiantes[j + 1][0];
+
+                        // Renovar la posición del mayor.
+                        p_nombresEstudiantes[j + 1][0] = tempNombre;
+                        p_nombresEstudiantes[j + 1][0] = tempApellido;
+                        p_notasEstudiantes[j + 1][0] = tempPrueba;
+                        p_notasEstudiantes[j + 1][1] = tempPrueba;
+                        p_asistenciaEstudiantes[j + 1][0] = tempAsistencias;
+                        p_aprobacionEstudiantes[j][0] = tempAprobacion;
+                    }
+                }
+            }
+        }
+
+        // Ordena de manera descendente a los estudiantes considerando su nota de la prueba.
+        static void ExamenDescendente(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
+        {
+            string tempNombre, tempApellido;
+            double tempPrueba, tempExamen;
+            int tempAsistencias;
+            bool tempAprobacion;
+            for (int i = 0; i < p_index; i++)
+            {
+                for (int j = 0; j < p_index - 1; j++)
+                {
+                    if (p_notasEstudiantes[j][0] < p_notasEstudiantes[j + 1][0])
+                    {
+                        // Inicializar variables temporales.
+                        tempNombre = p_nombresEstudiantes[j][0];
+                        tempApellido = p_nombresEstudiantes[j][1];
+                        tempPrueba = p_notasEstudiantes[j][0];
+                        tempExamen = p_notasEstudiantes[j][1];
+                        tempAsistencias = p_asistenciaEstudiantes[j][0];
+                        tempAprobacion = p_aprobacionEstudiantes[j][0];
+
+                        // Renovar la posición del menor en la posición del mayor.                        
+                        p_nombresEstudiantes[j][0] = p_nombresEstudiantes[j + 1][0];
+                        p_nombresEstudiantes[j][1] = p_nombresEstudiantes[j + 1][1];
+                        p_notasEstudiantes[j][0] = p_notasEstudiantes[j + 1][0];
+                        p_notasEstudiantes[j][1] = p_notasEstudiantes[j + 1][1];
+                        p_asistenciaEstudiantes[j][0] = p_asistenciaEstudiantes[j + 1][0];
+                        p_aprobacionEstudiantes[j][0] = p_aprobacionEstudiantes[j + 1][0];
+
+                        // Renovar la posición del mayor.
+                        p_nombresEstudiantes[j + 1][0] = tempNombre;
+                        p_nombresEstudiantes[j + 1][0] = tempApellido;
+                        p_notasEstudiantes[j + 1][0] = tempPrueba;
+                        p_notasEstudiantes[j + 1][1] = tempPrueba;
+                        p_asistenciaEstudiantes[j + 1][0] = tempAsistencias;
+                        p_aprobacionEstudiantes[j][0] = tempAprobacion;
+                    }
+                }
+            }
         }
 
         #endregion
