@@ -20,8 +20,7 @@ namespace Proyecto_Final_Programación_Estructurada
             // Variable que establece la cantidad de estudiantes ingresados.
             int index = 0;
 
-            // Variable para gestionar menus.
-            int opcion1 = 0;
+            // Variable para gestionar menus.            
             string opcionString1 = null;
 
             #endregion
@@ -189,7 +188,7 @@ namespace Proyecto_Final_Programación_Estructurada
             {
                 for (int j = 0; j < p_index - 1; j++)
                 {
-                    if (p_notasEstudiantes[j][0] < p_notasEstudiantes[j + 1][0])
+                    if (p_notasEstudiantes[j][1] < p_notasEstudiantes[j + 1][1])
                     {
                         // Inicializar variables temporales.
                         tempNombre = p_nombresEstudiantes[j][0];
@@ -233,7 +232,7 @@ namespace Proyecto_Final_Programación_Estructurada
                 else { Console.BackgroundColor = ConsoleColor.Black; Console.ForegroundColor = ConsoleColor.White; }
                 if (p_aprobacionEstudiantes[i][0] == true) temp = "APROBADO";
                 else temp = "REPROBADO";
-                Console.WriteLine($"{p_nombresEstudiantes[i][0]}\t\t{p_nombresEstudiantes[i][1]}\t\t\t{p_notasEstudiantes[i][0]}\t\t{p_notasEstudiantes[i][1]}\t\t{p_asistenciaEstudiantes[i][0]}\t\t\t{temp}");
+                Console.WriteLine($"{p_nombresEstudiantes[i][0]}\t\t{p_nombresEstudiantes[i][1]}\t\t\t{p_notasEstudiantes[i][0]}\t\t{p_notasEstudiantes[i][1]}\t\t{p_asistenciaEstudiantes[i][0]}\t\t\t{temp}  ");
             }
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
