@@ -19,7 +19,9 @@ namespace Proyecto_Final_Programación_Estructurada
             bool[][] aprobacionEstudiantes;
             // Variable que establece la cantidad de estudiantes ingresados.
             int index = 0;
-
+            int asis;
+            string res;
+            bool val=false;
             // Variable para gestionar menus.            
             string opcionString1 = null;
 
@@ -31,6 +33,47 @@ namespace Proyecto_Final_Programación_Estructurada
             InicializarValores(out nombresEstudiantes, out notasEstudiantes, out asistenciasEstudiantes, out aprobacionEstudiantes);
             InicializarValores(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
 
+            #endregion
+            #region Ingreso Estudiantes
+                 Console.WriteLine("Lista de estudiantes: \n ");
+            do
+            {
+                val = true;
+                    index++;
+                    Console.Write("Nombre del Estudiante N*{0}: ", index );
+                    string nom = Console.ReadLine();
+                    nom = nom.ToUpper();
+                    Console.Write("Apellido del Estudiante N*{0}: ", index);
+                    string ape = Console.ReadLine();
+                    ape = ape.ToUpper();
+                    Console.Write("Nota de la prueba (/20) del Estudiante N*{0}:  ", index);
+                    string nota = Console.ReadLine();
+                    Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index );
+                    string exam = Console.ReadLine();
+
+                    do
+                    {
+                        Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index );
+                        asis = int.Parse(Console.ReadLine());
+                        if (asis == 0)
+                        {
+                            Console.Write("El estudiante nunca asistio.");
+                        }
+                        if (asis > 20 || asis < 0)
+                        {
+                            Console.Write("Favor ingresar dentro del regimen establecido");
+                        }
+                    }
+                    while (asis > 20 || asis < 0);
+                    
+                
+                Console.WriteLine("Desea ingresar otro estudiante? (S/N)");
+                res = Console.ReadLine();
+                if (res.ToUpper().Equals("N")) val = false;
+                Console.WriteLine();
+            }
+            while (val);
+            Console.ReadKey();
             #endregion
 
             #region Menu de desplegue de información
