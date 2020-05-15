@@ -19,9 +19,12 @@ namespace Proyecto_Final_Programación_Estructurada
             bool[][] aprobacionEstudiantes;
             // Variable que establece la cantidad de estudiantes ingresados.
             int index = 0;
+            
+            // Variables que definen el ingreso de un estudiante individual.
             int asis;
             string res;
             bool val=false;
+            
             // Variable para gestionar menus.            
             string opcionString1 = null;
 
@@ -34,8 +37,10 @@ namespace Proyecto_Final_Programación_Estructurada
             InicializarValores(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
 
             #endregion
+                
             #region Ingreso Estudiantes
-                 Console.WriteLine("Lista de estudiantes: \n ");
+                
+            Console.WriteLine("Lista de estudiantes: \n ");
             do
             {
                 val = true;
@@ -73,7 +78,8 @@ namespace Proyecto_Final_Programación_Estructurada
                 Console.WriteLine();
             }
             while (val);
-            Console.ReadKey();
+            Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
+            
             #endregion
 
             #region Menu de desplegue de información
