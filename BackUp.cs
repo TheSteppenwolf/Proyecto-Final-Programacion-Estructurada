@@ -20,6 +20,12 @@ namespace Proyecto_Final_Programación_Estructurada
             // Variable que establece la cantidad de estudiantes ingresados.
             int index = 0;
 
+            // Variables que definen el ingreso de un estudiante individual.
+            string nom, ape, nota, exam;
+            int asis;
+            string res;
+            bool val = false;
+
             // Variable para gestionar menus.            
             string opcionString1 = null;
 
@@ -29,7 +35,50 @@ namespace Proyecto_Final_Programación_Estructurada
 
             // Inicializa los jagged array para su uso.
             InicializarValores(out nombresEstudiantes, out notasEstudiantes, out asistenciasEstudiantes, out aprobacionEstudiantes);
+            // Creación de estudiantes para casos de prueba.
             InicializarValores(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+
+            #endregion
+
+            #region Ingreso Estudiantes
+
+            Console.WriteLine("Lista de estudiantes: \n ");
+            do
+            {
+                val = true;
+                //index++;
+                Console.Write("Nombre del Estudiante N*{0}: ", index);
+                nom = Console.ReadLine().ToUpper();                
+                Console.Write("Apellido del Estudiante N*{0}: ", index);
+                ape = Console.ReadLine().ToUpper();                
+                Console.Write("Nota de la prueba (/20) del Estudiante N*{0}:  ", index);
+                nota = Console.ReadLine();
+                Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index);
+                exam = Console.ReadLine();
+
+                do
+                {
+                    Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index);
+                    asis = int.Parse(Console.ReadLine());
+                    if (asis == 0)
+                    {
+                        Console.Write("El estudiante nunca asistio.");
+                    }
+                    if (asis > 20 || asis < 0)
+                    {
+                        Console.Write("Favor ingresar dentro del regimen establecido");
+                    }
+                }
+                while (asis > 20 || asis < 0);
+
+
+                Console.Write("Desea ingresar otro estudiante? (S/N)");
+                res = Console.ReadLine();
+                if (res.ToUpper().Equals("N")) val = false;
+                Console.WriteLine();
+            }
+            while (val);
+            Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
 
             #endregion
 
@@ -120,30 +169,30 @@ namespace Proyecto_Final_Programación_Estructurada
         // Crea estudiantes para casos de prueba.
         static void InicializarValores(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
         {
-            p_nombresEstudiantes[0] = new string[] { "SEBASTIAN", "TAMAYO" };
-            p_notasEstudiantes[0] = new double[] { 19, 17 };
-            p_asistenciaEstudiantes[0] = new int[] { 18 };
-            p_aprobacionEstudiantes[0] = new bool[] { true };
+            p_nombresEstudiantes[p_index] = new string[] { "SEBASTIAN", "TAMAYO" };
+            p_notasEstudiantes[p_index] = new double[] { 19, 17 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 18 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { true };
             p_index++;
-            p_nombresEstudiantes[1] = new string[] { "BRYAN", "CUVI" };
-            p_notasEstudiantes[1] = new double[] { 18, 19 };
-            p_asistenciaEstudiantes[1] = new int[] { 17 };
-            p_aprobacionEstudiantes[1] = new bool[] { true };
+            p_nombresEstudiantes[p_index] = new string[] { "BRYAN", "CUVI" };
+            p_notasEstudiantes[p_index] = new double[] { 18, 19 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 17 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { true };
             p_index++;
-            p_nombresEstudiantes[2] = new string[] { "SOFIA", "VILLACIS" };
-            p_notasEstudiantes[2] = new double[] { 20, 20 };
-            p_asistenciaEstudiantes[2] = new int[] { 20 };
-            p_aprobacionEstudiantes[2] = new bool[] { true };
+            p_nombresEstudiantes[p_index] = new string[] { "SOFIA", "VILLACIS" };
+            p_notasEstudiantes[p_index] = new double[] { 20, 20 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 20 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { true };
             p_index++;
-            p_nombresEstudiantes[3] = new string[] { "VLADIMIR", "ESTEVENSON" };
-            p_notasEstudiantes[3] = new double[] { 10, 15 };
-            p_asistenciaEstudiantes[3] = new int[] { 12 };
-            p_aprobacionEstudiantes[3] = new bool[] { false };
+            p_nombresEstudiantes[p_index] = new string[] { "VLADIMIR", "ESTEVENSON" };
+            p_notasEstudiantes[p_index] = new double[] { 10, 15 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 12 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { false };
             p_index++;
-            p_nombresEstudiantes[4] = new string[] { "VERONICA", "ALTAMIRANO" };
-            p_notasEstudiantes[4] = new double[] { 15, 17 };
-            p_asistenciaEstudiantes[4] = new int[] { 20 };
-            p_aprobacionEstudiantes[4] = new bool[] { false };
+            p_nombresEstudiantes[p_index] = new string[] { "VERONICA", "ALTAMIRANO" };
+            p_notasEstudiantes[p_index] = new double[] { 15, 17 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 20 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { false };
             p_index++;
         }
 
@@ -368,3 +417,4 @@ namespace Proyecto_Final_Programación_Estructurada
 
     }
 }
+
