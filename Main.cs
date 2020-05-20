@@ -44,7 +44,7 @@ namespace Proyecto_Final_Programación_Estructurada
             do
             {
                 val = true;
-                    index++;
+                    //index++;
                     Console.Write("Nombre del Estudiante N*{0}: ", index );
                     string nom = Console.ReadLine();
                     nom = nom.ToUpper();
