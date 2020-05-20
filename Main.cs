@@ -21,9 +21,10 @@ namespace Proyecto_Final_Programación_Estructurada
             int index = 0;
             
             // Variables que definen el ingreso de un estudiante individual.
+            string nom, ape, nota, exam;
             int asis;
             string res;
-            bool val=false;
+            bool val = false;
             
             // Variable para gestionar menus.            
             string opcionString1 = null;
