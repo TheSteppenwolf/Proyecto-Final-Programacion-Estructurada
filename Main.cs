@@ -169,30 +169,30 @@ namespace Proyecto_Final_Programación_Estructurada
         // Crea estudiantes para casos de prueba.
         static void InicializarValores(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
         {
-            p_nombresEstudiantes[0] = new string[] { "SEBASTIAN", "TAMAYO" };
-            p_notasEstudiantes[0] = new double[] { 19, 17 };
-            p_asistenciaEstudiantes[0] = new int[] { 18 };
-            p_aprobacionEstudiantes[0] = new bool[] { true };
+            p_nombresEstudiantes[p_index] = new string[] { "SEBASTIAN", "TAMAYO" };
+            p_notasEstudiantes[p_index] = new double[] { 19, 17 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 18 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { true };
             p_index++;
-            p_nombresEstudiantes[1] = new string[] { "BRYAN", "CUVI" };
-            p_notasEstudiantes[1] = new double[] { 18, 19 };
-            p_asistenciaEstudiantes[1] = new int[] { 17 };
-            p_aprobacionEstudiantes[1] = new bool[] { true };
+            p_nombresEstudiantes[p_index] = new string[] { "BRYAN", "CUVI" };
+            p_notasEstudiantes[p_index] = new double[] { 18, 19 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 17 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { true };
             p_index++;
-            p_nombresEstudiantes[2] = new string[] { "SOFIA", "VILLACIS" };
-            p_notasEstudiantes[2] = new double[] { 20, 20 };
-            p_asistenciaEstudiantes[2] = new int[] { 20 };
-            p_aprobacionEstudiantes[2] = new bool[] { true };
+            p_nombresEstudiantes[p_index] = new string[] { "SOFIA", "VILLACIS" };
+            p_notasEstudiantes[p_index] = new double[] { 20, 20 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 20 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { true };
             p_index++;
-            p_nombresEstudiantes[3] = new string[] { "VLADIMIR", "ESTEVENSON" };
-            p_notasEstudiantes[3] = new double[] { 10, 15 };
-            p_asistenciaEstudiantes[3] = new int[] { 12 };
-            p_aprobacionEstudiantes[3] = new bool[] { false };
+            p_nombresEstudiantes[p_index] = new string[] { "VLADIMIR", "ESTEVENSON" };
+            p_notasEstudiantes[p_index] = new double[] { 10, 15 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 12 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { false };
             p_index++;
-            p_nombresEstudiantes[4] = new string[] { "VERONICA", "ALTAMIRANO" };
-            p_notasEstudiantes[4] = new double[] { 15, 17 };
-            p_asistenciaEstudiantes[4] = new int[] { 20 };
-            p_aprobacionEstudiantes[4] = new bool[] { false };
+            p_nombresEstudiantes[p_index] = new string[] { "VERONICA", "ALTAMIRANO" };
+            p_notasEstudiantes[p_index] = new double[] { 15, 17 };
+            p_asistenciaEstudiantes[p_index] = new int[] { 20 };
+            p_aprobacionEstudiantes[p_index] = new bool[] { false };
             p_index++;
         }
 
