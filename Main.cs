@@ -45,17 +45,15 @@ namespace Proyecto_Final_Programación_Estructurada
             do
             {
                 val = true;
-                    //index++;
-                    Console.Write("Nombre del Estudiante N*{0}: ", index );
-                    string nom = Console.ReadLine();
-                    nom = nom.ToUpper();
-                    Console.Write("Apellido del Estudiante N*{0}: ", index);
-                    string ape = Console.ReadLine();
-                    ape = ape.ToUpper();
-                    Console.Write("Nota de la prueba (/20) del Estudiante N*{0}:  ", index);
-                    string nota = Console.ReadLine();
-                    Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index );
-                    string exam = Console.ReadLine();
+                //index++;
+                Console.Write("Nombre del Estudiante N*{0}: ", index);
+                nom = Console.ReadLine().ToUpper();                
+                Console.Write("Apellido del Estudiante N*{0}: ", index);
+                ape = Console.ReadLine().ToUpper();                
+                Console.Write("Nota de la prueba (/20) del Estudiante N*{0}:  ", index);
+                nota = Console.ReadLine();
+                Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index);
+                exam = Console.ReadLine();
 
                     do
                     {
