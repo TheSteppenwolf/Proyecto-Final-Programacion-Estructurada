@@ -8,7 +8,7 @@ namespace Proyecto_Final_Programación_Estructurada
 {
     class Program
     {
-        static void Main(string[] args)
+        static void main(string[] args)
         {
             #region Variables 
 
@@ -97,6 +97,9 @@ namespace Proyecto_Final_Programación_Estructurada
                     #region Por nombre de manera ascendente
 
                     case "1":
+                        ascendenteNombre(index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes);
+                        GetEstudiantes(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                         break;
 
                     #endregion
@@ -198,7 +201,54 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #endregion
 
-        #region Ordenamiento de los datos del estudiante
+        #region Ordenamiento de los datos del estudiante     
+
+        static void ascendenteNombre(int p_index, ref string[][] nombresEstudiantes, ref double[][] notasEstudiantes, ref int[][] asistenciaEstudiantes)
+        {
+            string itercambiarNombre;
+            string itercambiarApellio;
+            double intercambiarNota;
+            double intercambioExamen;
+            int intercambioAsistencia;
+            for (int i = 0; i < p_index; i++)
+            {
+                for (int j = 0; j < p_index - 1; j++)
+                {
+                    if (nombresEstudiantes[j][0] == null || nombresEstudiantes[j + 1][0] == null)
+                    {
+                        continue;
+                    }
+                    else if (nombresEstudiantes[j + 1][0].CompareTo(nombresEstudiantes[j][0]) < 0)
+                    {
+                        //intercambia nombres
+                        itercambiarNombre = nombresEstudiantes[j + 1][0];
+                        nombresEstudiantes[j + 1][0] = nombresEstudiantes[j][0];
+                        nombresEstudiantes[j][0] = itercambiarNombre;
+
+                        //intercambia apellidos
+                        itercambiarApellio = nombresEstudiantes[j + 1][1];
+                        nombresEstudiantes[j + 1][1] = nombresEstudiantes[j][1];
+                        nombresEstudiantes[j][1] = itercambiarApellio;
+
+                        //intercambia nota
+                        intercambiarNota = notasEstudiantes[j + 1][0];
+                        notasEstudiantes[j + 1][0] = notasEstudiantes[j][0];
+                        notasEstudiantes[j][0] = intercambiarNota;
+
+                        //intercambia examen
+                        intercambioExamen = notasEstudiantes[j + 1][0];
+                        notasEstudiantes[j + 1][0] = notasEstudiantes[j][0];
+                        notasEstudiantes[j][0] = intercambioExamen;
+
+                        //intercambia asistencia
+                        intercambioAsistencia = asistenciaEstudiantes[j + 1][0];
+                        asistenciaEstudiantes[j + 1][0] = asistenciaEstudiantes[j][0];
+                        asistenciaEstudiantes[j][0] = intercambioAsistencia;
+                    }
+
+                }
+            }
+        }
 
         // Ordena de manera ascendente a los estudiantes considerando su nota de la prueba.
         static void PruebaAscendente(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
@@ -417,4 +467,3 @@ namespace Proyecto_Final_Programación_Estructurada
 
     }
 }
-
