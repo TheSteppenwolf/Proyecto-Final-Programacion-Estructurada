@@ -1,1 +1,174 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
+
+
+namespace Ingeso_datos
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] nombresEstudiantes = null;
+            string[] apellidoEstudiantes = null;
+            double[] notasEstudiantes = null;
+            double[] examenEstudiantes = null;
+            int[] asistenciasEstudiantes = null;
+            string[] aprobacionEstudiantes=null;
+          
+            int asis;
+            string res;
+            bool val = false;
+            int posEstu =0;
+            int index = 0;
+
+            do
+            {
+                val = true;
+                index++;
+                Console.Write("Nombre del Estudiante N*{0}: ", index);
+                string nom = Console.ReadLine();
+                nom = nom.ToUpper();
+                Console.Write("Apellido del Estudiante N*{0}: ", index);
+                string ape = Console.ReadLine();
+                ape = ape.ToUpper();
+                Console.Write("Nota de la prueba (/20) del Estudiante N*{0}:  ", index);
+                double nota = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index);
+                double exam = Convert.ToDouble(Console.ReadLine());
+
+                do
+                {
+                    Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index);
+                    asis = int.Parse(Console.ReadLine());
+                    if (asis == 0)
+                    {
+                        Console.Write("El estudiante nunca asistio.");
+                    }
+                    if (asis > 20 || asis < 0)
+                    {
+                        Console.Write("Favor ingresar dentro del regimen establecido");
+                    }
+                }
+                while (asis > 20 || asis < 0);
+
+
+                Console.WriteLine("Desea ingresar otro estudiante? (S/N)");
+                res = Console.ReadLine();
+                if (res.ToUpper().Equals("N")) val = false;
+                Console.WriteLine();
+                InicializarValores(index, nom, ape, nota, exam, asis, ref nombresEstudiantes, ref apellidoEstudiantes, ref notasEstudiantes,ref examenEstudiantes, ref asistenciasEstudiantes,  ref posEstu);
+             } 
+                while (val);
+            ascendenteNombre(ref nombresEstudiantes, ref apellidoEstudiantes, ref notasEstudiantes, ref examenEstudiantes, ref asistenciasEstudiantes);
+            imprimir(ref nombresEstudiantes, ref apellidoEstudiantes, ref notasEstudiantes, ref examenEstudiantes, ref asistenciasEstudiantes);
+            Console.ReadKey();
+        }
+        static void InicializarValores(int index, string nom, string ape, double nota, double exam, int asis, ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes,ref double[]examenEstudiantes, ref int[] asistenciaEstudiantes, ref int posEstu)
+        {
+            if (nombresEstudiantes == null)
+                nombresEstudiantes = new string[100];
+                for (int i = posEstu; i < index; i++)
+            {
+
+                nombresEstudiantes[i] =  nom ;
+            }
+            if( apellidoEstudiantes== null)
+                apellidoEstudiantes = new string[100];
+            for (int i = posEstu; i < index; i++)
+            {
+
+                apellidoEstudiantes[i] = ape;
+            }
+            if (notasEstudiantes == null)
+                notasEstudiantes = new double[100];
+            for (int i = posEstu; i < index; i++)
+            {
+
+                notasEstudiantes[i] = nota;
+            }
+            if (examenEstudiantes == null)
+                examenEstudiantes = new double[100];
+            for (int i = posEstu; i < index; i++)
+            {
+
+                examenEstudiantes[i] = exam;
+            }
+            if (asistenciaEstudiantes == null)
+                asistenciaEstudiantes = new int[100];
+            for (int i = posEstu; i < index; i++)
+            {
+
+                asistenciaEstudiantes[i] = asis;
+            }
+            posEstu++;
+        }
+        static void ascendenteNombre(ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes, ref double[] examenEstudiantes, ref int[] asistenciaEstudiantes)
+        {
+            string itercambiarNombre;
+            string itercambiarApellio;
+            double intercambiarNota;
+            double intercambioExamen;
+            int intercambioAsistencia;
+            for (int i = 1; i < nombresEstudiantes.Length; i++)
+            {
+                for (int j = nombresEstudiantes.Length-1; j >=i ; j--)
+                {
+                    if (nombresEstudiantes[j]==null || nombresEstudiantes[j-1]==null) {
+                        continue;
+                    }
+                    else if (nombresEstudiantes[j - 1].CompareTo(nombresEstudiantes[j]) > 0)
+                    {
+                        //intercambia nombres
+                        itercambiarNombre = nombresEstudiantes[j - 1];
+                        nombresEstudiantes[j - 1] = nombresEstudiantes[j];
+                        nombresEstudiantes[j] = itercambiarNombre;
+
+                        //intercambia apellidos
+                        itercambiarApellio = apellidoEstudiantes[j - 1];
+                        apellidoEstudiantes[j - 1] = apellidoEstudiantes[j];
+                        apellidoEstudiantes[j] = itercambiarApellio;
+
+                        //intercambia nota
+                        intercambiarNota = notasEstudiantes[j - 1];
+                        notasEstudiantes[j - 1] = notasEstudiantes[j];
+                        notasEstudiantes[j] = intercambiarNota;
+
+                        //intercambia examen
+                        intercambioExamen = examenEstudiantes[j - 1];
+                        examenEstudiantes[j - 1] = examenEstudiantes[j];
+                        examenEstudiantes[j] = intercambioExamen;
+
+                        //intercambia asistencia
+                        intercambioAsistencia = asistenciaEstudiantes[j - 1];
+                        asistenciaEstudiantes[j - 1] = asistenciaEstudiantes[j];
+                        asistenciaEstudiantes[j] = intercambioAsistencia;
+                    }
+
+                }
+            }
+            
+           
+
+        }
+        static void imprimir(ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes, ref double[] examenEstudiantes, ref int[] asistenciaEstudiantes) 
+        {
+            Console.WriteLine("Nombre\t\tApellido\tNota\tExamen\tPromedio\tAsistencia\tResultado");
+            for (int i = 0; i < nombresEstudiantes.Length; i++)
+            {
+                if (nombresEstudiantes[i] == null || apellidoEstudiantes[i] == null || notasEstudiantes[i] == 0 || examenEstudiantes[i] == 0 || asistenciaEstudiantes[i] == 0)
+                {
+                    continue;
+                }
+                else {
+                   
+                    Console.WriteLine(nombresEstudiantes[i]+"\t"+apellidoEstudiantes[i]+"\t"+notasEstudiantes[i]+"\t"+examenEstudiantes[i]+"\t"+((notasEstudiantes[i]+examenEstudiantes[i])/2)+"\t\t"+asistenciaEstudiantes[i]);
+
+                }
+            }
+        }
+    }
+}
