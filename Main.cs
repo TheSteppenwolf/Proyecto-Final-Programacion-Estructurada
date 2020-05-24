@@ -10,7 +10,8 @@ namespace Proyecto_Final_Programación_Estructurada
     {
         static void Main(string[] args)
         {
-             #region Variables 
+            // Actualizado
+            #region Variables 
 
             // Variables que almacenan a todos los estudiantes y determinan los parametros para serlo.
             string[] nombresEstudiantes;
@@ -33,6 +34,7 @@ namespace Proyecto_Final_Programación_Estructurada
 
             #endregion
 
+            // Actualizado
             #region Constructores
 
             // Inicializa los jagged array para su uso.
@@ -41,9 +43,9 @@ namespace Proyecto_Final_Programación_Estructurada
             InicializarValores(ref index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
 
             #endregion
-                
+
             #region Ingreso Estudiantes
-                
+
             Console.WriteLine("Lista de estudiantes: \n ");
             do
             {
@@ -58,30 +60,30 @@ namespace Proyecto_Final_Programación_Estructurada
                 Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index);
                 exam = Console.ReadLine();
 
-                    do
+                do
+                {
+                    Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index);
+                    asis = int.Parse(Console.ReadLine());
+                    if (asis == 0)
                     {
-                        Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index );
-                        asis = int.Parse(Console.ReadLine());
-                        if (asis == 0)
-                        {
-                            Console.Write("El estudiante nunca asistio.");
-                        }
-                        if (asis > 20 || asis < 0)
-                        {
-                            Console.Write("Favor ingresar dentro del regimen establecido");
-                        }
+                        Console.Write("El estudiante nunca asistio.");
                     }
-                    while (asis > 20 || asis < 0);
-                    
-                
-                Console.WriteLine("Desea ingresar otro estudiante? (S/N)");
+                    if (asis > 20 || asis < 0)
+                    {
+                        Console.Write("Favor ingresar dentro del regimen establecido");
+                    }
+                }
+                while (asis > 20 || asis < 0);
+
+
+                Console.Write("Desea ingresar otro estudiante? (S/N)");
                 res = Console.ReadLine();
                 if (res.ToUpper().Equals("N")) val = false;
                 Console.WriteLine();
             }
             while (val);
             Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
-            
+
             #endregion
 
             #region Menu de desplegue de información
@@ -99,6 +101,9 @@ namespace Proyecto_Final_Programación_Estructurada
                     #region Por nombre de manera ascendente
 
                     case "1":
+                        ascendenteNombre(index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes);
+                        GetEstudiantes(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                         break;
 
                     #endregion
@@ -157,7 +162,8 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #region Métodos
 
-         #region Inicialización de valores inciales para casos de prueba y para su uso.
+        // Actualizado
+        #region Inicialización de valores inciales para casos de prueba y para su uso.
 
         // Inicializa los valores de que almacenan a todos los esutdiantes para su uso o para resetear el registro.
         static void InicializarValores(out string[] p_nombresEstudiantes, out string[] p_apellidosEstudiantes, out double[] p_pruebasEstudiantes, out double[] p_examenesEstudiantes, out int[] p_asistenciaEstudiantes, out bool[] p_aprobacionEstudiantes)
@@ -203,12 +209,12 @@ namespace Proyecto_Final_Programación_Estructurada
             p_index++;
         }
 
-        #endregion
+        #endregion 
 
-        #region Ordenamiento de los datos del estudiante
+        #region Ordenamiento de los datos del estudiante             
 
         // Ordena de manera ascendente a los estudiantes considerando su nota de la prueba.
-        static void PruebaAscendente(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
+        static void PruebaAscendente(ref int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string tempNombre, tempApellido;
             double tempPrueba, tempExamen;
@@ -218,38 +224,38 @@ namespace Proyecto_Final_Programación_Estructurada
             {
                 for(int j = 0; j < p_index - 1; j++)
                 {
-                    if(p_notasEstudiantes[j][0] > p_notasEstudiantes[j + 1][0])
+                    if(p_pruebasEstudiantes[j] > p_pruebasEstudiantes[j + 1])
                     {
                         // Inicializar variables temporales.
-                        tempNombre = p_nombresEstudiantes[j][0];
-                        tempApellido = p_nombresEstudiantes[j][1];
-                        tempPrueba = p_notasEstudiantes[j][0];
-                        tempExamen = p_notasEstudiantes[j][1];
-                        tempAsistencias = p_asistenciaEstudiantes[j][0];
-                        tempAprobacion = p_aprobacionEstudiantes[j][0];
+                        tempNombre = p_nombresEstudiantes[j];
+                        tempApellido = p_apellidosEstudiantes[j];
+                        tempPrueba = p_pruebasEstudiantes[j];
+                        tempExamen = p_examenesEstudiantes[j];
+                        tempAsistencias = p_asistenciaEstudiantes[j];
+                        tempAprobacion = p_aprobacionEstudiantes[j];
 
                         // Renovar la posición del menor en la posición del mayor.                        
-                        p_nombresEstudiantes[j][0] = p_nombresEstudiantes[j + 1][0];
-                        p_nombresEstudiantes[j][1] = p_nombresEstudiantes[j + 1][1];
-                        p_notasEstudiantes[j][0] = p_notasEstudiantes[j + 1][0];
-                        p_notasEstudiantes[j][1] = p_notasEstudiantes[j + 1][1];
-                        p_asistenciaEstudiantes[j][0] = p_asistenciaEstudiantes[j + 1][0];
-                        p_aprobacionEstudiantes[j][0] = p_aprobacionEstudiantes[j + 1][0];
+                        p_nombresEstudiantes[j] = p_nombresEstudiantes[j + 1];
+                        p_apellidosEstudiantes[j] = p_apellidosEstudiantes[j + 1];
+                        p_pruebasEstudiantes[j] = p_pruebasEstudiantes[j + 1];
+                        p_examenesEstudiantes[j] = p_examenesEstudiantes[j + 1];
+                        p_asistenciaEstudiantes[j] = p_asistenciaEstudiantes[j + 1];
+                        p_aprobacionEstudiantes[j] = p_aprobacionEstudiantes[j + 1];
 
                         // Renovar la posición del mayor.
-                        p_nombresEstudiantes[j + 1][0] = tempNombre;
-                        p_nombresEstudiantes[j + 1][1] = tempApellido;
-                        p_notasEstudiantes[j + 1][0] = tempPrueba;
-                        p_notasEstudiantes[j + 1][1] = tempExamen;
-                        p_asistenciaEstudiantes[j + 1][0] = tempAsistencias;
-                        p_aprobacionEstudiantes[j + 1][0] = tempAprobacion;
+                        p_nombresEstudiantes[j + 1] = tempNombre;
+                        p_apellidosEstudiantes[j + 1] = tempApellido;
+                        p_pruebasEstudiantes[j + 1] = tempPrueba;
+                        p_examenesEstudiantes[j + 1] = tempExamen;
+                        p_asistenciaEstudiantes[j + 1] = tempAsistencias;
+                        p_aprobacionEstudiantes[j + 1] = tempAprobacion;
                     }
                 }
             }
         }
 
         // Ordena de manera descendente a los estudiantes considerando su nota de la prueba.
-        static void ExamenDescendente(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
+        static void ExamenDescendente(ref int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string tempNombre, tempApellido;
             double tempPrueba, tempExamen;
@@ -259,31 +265,31 @@ namespace Proyecto_Final_Programación_Estructurada
             {
                 for (int j = 0; j < p_index - 1; j++)
                 {
-                    if (p_notasEstudiantes[j][1] < p_notasEstudiantes[j + 1][1])
+                    if (p_examenesEstudiantes[j] < p_examenesEstudiantes[j + 1])
                     {
                         // Inicializar variables temporales.
-                        tempNombre = p_nombresEstudiantes[j][0];
-                        tempApellido = p_nombresEstudiantes[j][1];
-                        tempPrueba = p_notasEstudiantes[j][0];
-                        tempExamen = p_notasEstudiantes[j][1];
-                        tempAsistencias = p_asistenciaEstudiantes[j][0];
-                        tempAprobacion = p_aprobacionEstudiantes[j][0];
+                        tempNombre = p_nombresEstudiantes[j];
+                        tempApellido = p_apellidosEstudiantes[j];
+                        tempPrueba = p_pruebasEstudiantes[j];
+                        tempExamen = p_examenesEstudiantes[j];
+                        tempAsistencias = p_asistenciaEstudiantes[j];
+                        tempAprobacion = p_aprobacionEstudiantes[j];
 
                         // Renovar la posición del menor en la posición del mayor.                        
-                        p_nombresEstudiantes[j][0] = p_nombresEstudiantes[j + 1][0];
-                        p_nombresEstudiantes[j][1] = p_nombresEstudiantes[j + 1][1];
-                        p_notasEstudiantes[j][0] = p_notasEstudiantes[j + 1][0];
-                        p_notasEstudiantes[j][1] = p_notasEstudiantes[j + 1][1];
-                        p_asistenciaEstudiantes[j][0] = p_asistenciaEstudiantes[j + 1][0];
-                        p_aprobacionEstudiantes[j][0] = p_aprobacionEstudiantes[j + 1][0];
+                        p_nombresEstudiantes[j] = p_nombresEstudiantes[j + 1];
+                        p_apellidosEstudiantes[j] = p_apellidosEstudiantes[j + 1];
+                        p_pruebasEstudiantes[j] = p_pruebasEstudiantes[j + 1];
+                        p_examenesEstudiantes[j] = p_examenesEstudiantes[j + 1];
+                        p_asistenciaEstudiantes[j] = p_asistenciaEstudiantes[j + 1];
+                        p_aprobacionEstudiantes[j] = p_aprobacionEstudiantes[j + 1];
 
                         // Renovar la posición del mayor.
-                        p_nombresEstudiantes[j + 1][0] = tempNombre;
-                        p_nombresEstudiantes[j + 1][1] = tempApellido;
-                        p_notasEstudiantes[j + 1][0] = tempPrueba;
-                        p_notasEstudiantes[j + 1][1] = tempExamen;
-                        p_asistenciaEstudiantes[j + 1][0] = tempAsistencias;
-                        p_aprobacionEstudiantes[j + 1][0] = tempAprobacion;
+                        p_nombresEstudiantes[j + 1] = tempNombre;
+                        p_apellidosEstudiantes[j + 1] = tempApellido;
+                        p_pruebasEstudiantes[j + 1] = tempPrueba;
+                        p_examenesEstudiantes[j + 1] = tempExamen;
+                        p_asistenciaEstudiantes[j + 1] = tempAsistencias;
+                        p_aprobacionEstudiantes[j + 1] = tempAprobacion;
                     }
                 }
             }
