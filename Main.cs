@@ -10,7 +10,6 @@ namespace Proyecto_Final_Programación_Estructurada
     {
         static void Main(string[] args)
         {
-            // Actualizado
             #region Variables 
 
             // Variables que almacenan a todos los estudiantes y determinan los parametros para serlo.
@@ -33,8 +32,7 @@ namespace Proyecto_Final_Programación_Estructurada
             string opcionString1 = null;
 
             #endregion
-
-            // Actualizado
+           
             #region Constructores
 
             // Inicializa los jagged array para su uso.
@@ -97,8 +95,7 @@ namespace Proyecto_Final_Programación_Estructurada
                 Console.Write("Opcion: "); opcionString1 = Console.ReadLine();
                 Console.Clear();
                 switch(opcionString1)
-                {
-                    // Actualizado
+                {                    
                     #region Por nombre de manera ascendente
 
                     case "1":
@@ -110,8 +107,7 @@ namespace Proyecto_Final_Programación_Estructurada
                         break;
 
                     #endregion
-
-                    // Actualizado
+                   
                     #region Por apellido de manera descendente
 
                     case "2":
@@ -124,7 +120,6 @@ namespace Proyecto_Final_Programación_Estructurada
 
                     #endregion
 
-                    // Actualizado
                     #region Por nota de la prueba de manera ascendente
 
                     case "3":
@@ -137,7 +132,6 @@ namespace Proyecto_Final_Programación_Estructurada
 
                     #endregion
 
-                    // Actualizado
                     #region Por nota del examen de manera descendente
 
                     case "4":
@@ -171,10 +165,8 @@ namespace Proyecto_Final_Programación_Estructurada
             Console.WriteLine("\nPresione cualquier tecla para salir..."); Console.ReadKey();
         }
 
-        // Actuaizado
         #region Métodos
 
-        // Actualizado
         #region Inicialización de valores inciales para casos de prueba y para su uso.
 
         // Inicializa los valores de que almacenan a todos los esutdiantes para su uso o para resetear el registro.
@@ -223,7 +215,6 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #endregion
 
-        // Actualizado
         #region Ordenamiento de los datos del estudiante      
 
         // Ordena de manera ascendente a los estudiantes considerando su nombre.
@@ -233,7 +224,7 @@ namespace Proyecto_Final_Programación_Estructurada
             double intercambiarNota, intercambioExamen;
             int intercambioAsistencia;
             bool intercambioAprobacion;
-            for (int i = 0; i < index; i++)
+            for (int i = 1; i < index; i++)
             {
                 for (int j = index - 1; j >= i; j--)
                 {
@@ -414,7 +405,6 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #endregion
 
-        // Actualizado.
         #region Impresión de los estudiantes
 
         // Imprime a todos los estudiantes en un respectivo formato tipo tabla.
@@ -493,7 +483,6 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #endregion
 
-        // Actualizado
         #region Funciones para ambiente amigable con el usuario.
 
         // Despliega puntos a la consola simulando que el programa esta procesando información.
