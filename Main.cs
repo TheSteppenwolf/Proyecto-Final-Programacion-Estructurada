@@ -98,42 +98,53 @@ namespace Proyecto_Final_Programación_Estructurada
                 Console.Clear();
                 switch(opcionString1)
                 {
+                    // Actualizado
                     #region Por nombre de manera ascendente
 
                     case "1":
-                        ascendenteNombre(index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes);
-                        GetEstudiantes(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        // Se llama a la función para el ordenamiento según lo requerido.
+                        ascendenteNombre(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        // Se llama a la función de impresión de los estudiantes.
+                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                         break;
 
                     #endregion
 
+                    // Actualizado
                     #region Por apellido de manera descendente
 
                     case "2":
-                        break;
-
-                    #endregion
-
-                    #region Por nota de la prueba de manera ascendente
-
-                    case "3":                                                
                         // Se llama a la función para el ordenamiento según lo requerido.
-                        PruebaAscendente(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        descendenteApellido(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         // Se llama a la función de impresión de los estudiantes.
-                        GetEstudiantes(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                         break;
 
                     #endregion
 
+                    // Actualizado
+                    #region Por nota de la prueba de manera ascendente
+
+                    case "3":
+                        // Se llama a la función para el ordenamiento según lo requerido.
+                        PruebaAscendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        // Se llama a la función de impresión de los estudiantes.
+                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
+                        break;
+
+                    #endregion
+
+                    // Actualizado
                     #region Por nota del examen de manera descendente
 
-                    case "4":                        
+                    case "4":
                         // Se llama a la función para el ordenamiento según lo requerido.
-                        ExamenDescendente(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        ExamenDescendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         // Se llama a la función de impresión de los estudiantes.
-                        GetEstudiantes(ref index, ref nombresEstudiantes, ref notasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                         break;
 
@@ -160,6 +171,7 @@ namespace Proyecto_Final_Programación_Estructurada
             Console.WriteLine("\nPresione cualquier tecla para salir..."); Console.ReadKey();
         }
 
+        // Actuaizado
         #region Métodos
 
         // Actualizado
@@ -209,7 +221,7 @@ namespace Proyecto_Final_Programación_Estructurada
             p_index++;
         }
 
-        #endregion 
+        #endregion
 
         // Actualizado
         #region Ordenamiento de los datos del estudiante      
@@ -402,10 +414,11 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #endregion
 
+        // Actualizado.
         #region Impresión de los estudiantes
 
         // Imprime a todos los estudiantes en un respectivo formato tipo tabla.
-        static void GetEstudiantes(ref int p_index, ref string[][] p_nombresEstudiantes, ref double[][] p_notasEstudiantes, ref int[][] p_asistenciaEstudiantes, ref bool[][] p_aprobacionEstudiantes)
+        static void GetEstudiantes(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidoEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string temp;
             int counterX, counterY = 0;
@@ -419,7 +432,7 @@ namespace Proyecto_Final_Programación_Estructurada
             Console.Write("Nombre");
             // Se coloca en la posición deseada para respetar un mismo margen.
             Console.SetCursorPosition(counterX, counterY);
-            if (MayorApellido(p_index, p_nombresEstudiantes) > "Apellido".Length) counterX += MayorApellido(p_index, p_nombresEstudiantes) + 8;
+            if (MayorApellido(p_index, p_apellidoEstudiantes) > "Apellido".Length) counterX += MayorApellido(p_index, p_nombresEstudiantes) + 8;
             else counterX += "Apellido".Length + 8;
             Console.Write("Apellido");
             Console.SetCursorPosition(counterX, counterY);
@@ -444,28 +457,28 @@ namespace Proyecto_Final_Programación_Estructurada
             for (int i = 0; i <= p_index - 1; i++)
             {
                 LineaPintada(i, counterY);
-                if (p_aprobacionEstudiantes[i][0] == true) temp = "APROBADO";
+                if (p_aprobacionEstudiantes[i] == true) temp = "APROBADO";
                 else temp = "REPROBADO";
 
                 // Impresión con formato amigable para el usuario.
                 // Se evalua la tabulación dependiendo del string más largo, si no es del estudiante se toma de su identificador, puede ser "Nombre" como cualquier otro.
                 if (MayorNombre(p_index, p_nombresEstudiantes) > "Nombre".Length) counterX = MayorNombre(p_index, p_nombresEstudiantes) + 8;
                 else counterX = "Nombre".Length + 8;
-                Console.Write($"{p_nombresEstudiantes[i][0]}");
+                Console.Write($"{p_nombresEstudiantes[i]}");
                 // Se coloca en la posición deseada para respetar un mismo margen.
                 Console.SetCursorPosition(counterX, counterY);
-                if (MayorApellido(p_index, p_nombresEstudiantes) > "Apellido".Length) counterX += MayorApellido(p_index, p_nombresEstudiantes) + 8;
+                if (MayorApellido(p_index, p_apellidoEstudiantes) > "Apellido".Length) counterX += MayorApellido(p_index, p_nombresEstudiantes) + 8;
                 else counterX += "Apellido".Length + 8;
-                Console.Write($"{p_nombresEstudiantes[i][1]}");                
+                Console.Write($"{p_apellidoEstudiantes[i]}");                
                 Console.SetCursorPosition(counterX, counterY);
                 counterX += "Prueba".Length + 8;
-                Console.Write($"{p_notasEstudiantes[i][0]}");
+                Console.Write($"{p_pruebasEstudiantes[i]}");
                 Console.SetCursorPosition(counterX, counterY);
                 counterX += "Examen".Length + 8;
-                Console.Write($"{p_notasEstudiantes[i][1]}");
+                Console.Write($"{p_examenEstudiantes[i]}");
                 Console.SetCursorPosition(counterX, counterY);
                 counterX += "Asistencias".Length + 7;
-                Console.Write($"{p_asistenciaEstudiantes[i][0]}");
+                Console.Write($"{p_asistenciaEstudiantes[i]}");
                 Console.SetCursorPosition(counterX, counterY);                
                 Console.WriteLine($"{temp}");
                 // Se aumenta una linea al contador de lineas.
@@ -480,6 +493,7 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #endregion
 
+        // Actualizado
         #region Funciones para ambiente amigable con el usuario.
 
         // Despliega puntos a la consola simulando que el programa esta procesando información.
@@ -493,28 +507,28 @@ namespace Proyecto_Final_Programación_Estructurada
         }
 
         // Devuelve el largo del nombre más largo de los estudiantes.
-        static int MayorNombre(int p_index ,string[][] p_nombresEstudiantes)
+        static int MayorNombre(int p_index ,string[] p_nombresEstudiantes)
         {
             int temp = 0;
             for(int i = 0; i < p_index; i++)
             {
-                if(p_nombresEstudiantes[i][0].Length > temp)
+                if(p_nombresEstudiantes[i].Length > temp)
                 {
-                    temp = p_nombresEstudiantes[i][0].Length;
+                    temp = p_nombresEstudiantes[i].Length;
                 }
             }
             return temp;
         }
 
         // Devuelve el largo del apellido más largo de los estudiantes.
-        static int MayorApellido(int p_index, string[][] p_nombresEstudiantes)
+        static int MayorApellido(int p_index, string[] p_apellidosEstudiantes)
         {
             int temp = 0;
             for (int i = 0; i < p_index; i++)
             {
-                if (p_nombresEstudiantes[i][1].Length > temp)
+                if (p_apellidosEstudiantes[i].Length > temp)
                 {
-                    temp = p_nombresEstudiantes[i][1].Length;
+                    temp = p_apellidosEstudiantes[i].Length;
                 }
             }
             return temp;
