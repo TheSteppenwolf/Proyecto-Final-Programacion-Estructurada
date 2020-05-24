@@ -211,10 +211,115 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #endregion 
 
-        #region Ordenamiento de los datos del estudiante             
+        // Actualizado
+        #region Ordenamiento de los datos del estudiante      
+
+        // Ordena de manera ascendente a los estudiantes considerando su nombre.
+        static void ascendenteNombre(int index, ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes, ref double[] examenEstudiantes, ref int[] asistenciaEstudiantes, ref bool[] aprobacionEstudiantes)
+        { 
+            string itercambiarNombre,itercambiarApellio;
+            double intercambiarNota, intercambioExamen;
+            int intercambioAsistencia;
+            bool intercambioAprobacion;
+            for (int i = 0; i < index; i++)
+            {
+                for (int j = index - 1; j >= i; j--)
+                {
+                    if (nombresEstudiantes[j] == null || nombresEstudiantes[j - 1] == null)
+                    {
+                        continue;
+                    }
+                    else if (nombresEstudiantes[j - 1].CompareTo(nombresEstudiantes[j]) > 0)
+                    {
+                        //intercambia nombres
+                        itercambiarNombre = nombresEstudiantes[j - 1];
+                        nombresEstudiantes[j - 1] = nombresEstudiantes[j];
+                        nombresEstudiantes[j] = itercambiarNombre;                       
+
+                        //intercambia apellidos
+                        itercambiarApellio = apellidoEstudiantes[j - 1];
+                        apellidoEstudiantes[j - 1] = apellidoEstudiantes[j];
+                        apellidoEstudiantes[j] = itercambiarApellio;
+
+                        //intercambia nota
+                        intercambiarNota = notasEstudiantes[j - 1];
+                        notasEstudiantes[j - 1] = notasEstudiantes[j];
+                        notasEstudiantes[j] = intercambiarNota;
+
+                        //intercambia examen
+                        intercambioExamen = examenEstudiantes[j - 1];
+                        examenEstudiantes[j - 1] = examenEstudiantes[j];
+                        examenEstudiantes[j] = intercambioExamen;
+
+                        //intercambia asistencia
+                        intercambioAsistencia = asistenciaEstudiantes[j - 1];
+                        asistenciaEstudiantes[j - 1] = asistenciaEstudiantes[j];
+                        asistenciaEstudiantes[j] = intercambioAsistencia;
+
+                        // Intercambiar aprobación
+                        intercambioAprobacion = aprobacionEstudiantes[j - 1];
+                        aprobacionEstudiantes[j - 1] = aprobacionEstudiantes[j];
+                        aprobacionEstudiantes[j] = intercambioAprobacion;
+                    }
+
+                }
+            }
+        }
+
+        // Ordena de manera descendente a los estudiantes considerando su apellido.
+        static void descendenteApellido(int p_index, ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes, ref double[] examenEstudiantes, ref int[] asistenciaEstudiantes, ref bool[] aprobacionEstudiantes)
+        {
+            string itercambiarNombre, itercambiarApellio;
+            double intercambiarNota, intercambioExamen;
+            int intercambioAsistencia;
+            bool intercambioAprobacion;
+            for (int i = 1; i < p_index; i++)
+            {
+                for (int j = p_index - 1; j >= i; j--)
+                {
+                    if (apellidoEstudiantes[j] == null || apellidoEstudiantes[j - 1] == null)
+                    {
+                        continue;
+                    }
+                    else if (apellidoEstudiantes[j - 1].CompareTo(apellidoEstudiantes[j]) < 0)
+                    {
+                        //intercambia nombres
+                        itercambiarNombre = nombresEstudiantes[j - 1];
+                        nombresEstudiantes[j - 1] = nombresEstudiantes[j];
+                        nombresEstudiantes[j] = itercambiarNombre;
+
+                        //intercambia apellidos
+                        itercambiarApellio = apellidoEstudiantes[j - 1];
+                        apellidoEstudiantes[j - 1] = apellidoEstudiantes[j];
+                        apellidoEstudiantes[j] = itercambiarApellio;
+
+                        //intercambia nota
+                        intercambiarNota = notasEstudiantes[j - 1];
+                        notasEstudiantes[j - 1] = notasEstudiantes[j];
+                        notasEstudiantes[j] = intercambiarNota;
+
+                        //intercambia examen
+                        intercambioExamen = examenEstudiantes[j - 1];
+                        examenEstudiantes[j - 1] = examenEstudiantes[j];
+                        examenEstudiantes[j] = intercambioExamen;
+
+                        //intercambia asistencia
+                        intercambioAsistencia = asistenciaEstudiantes[j - 1];
+                        asistenciaEstudiantes[j - 1] = asistenciaEstudiantes[j];
+                        asistenciaEstudiantes[j] = intercambioAsistencia;
+
+                        // Intercambiar aprobación
+                        intercambioAprobacion = aprobacionEstudiantes[j - 1];
+                        aprobacionEstudiantes[j - 1] = aprobacionEstudiantes[j];
+                        aprobacionEstudiantes[j] = intercambioAprobacion;
+                    }
+
+                }
+            }
+        }
 
         // Ordena de manera ascendente a los estudiantes considerando su nota de la prueba.
-        static void PruebaAscendente(ref int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
+        static void PruebaAscendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string tempNombre, tempApellido;
             double tempPrueba, tempExamen;
@@ -255,7 +360,7 @@ namespace Proyecto_Final_Programación_Estructurada
         }
 
         // Ordena de manera descendente a los estudiantes considerando su nota de la prueba.
-        static void ExamenDescendente(ref int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
+        static void ExamenDescendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string tempNombre, tempApellido;
             double tempPrueba, tempExamen;
