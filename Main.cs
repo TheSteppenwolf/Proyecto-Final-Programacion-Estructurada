@@ -23,7 +23,8 @@ namespace Proyecto_Final_Programación_Estructurada
             int index = 0;
 
             // Variables que definen el ingreso de un estudiante individual.
-            string nom, ape, nota, exam;
+            string nom, ape;
+            double nota, exam;
             int asis;
             string res;
             bool val = false;
@@ -48,31 +49,36 @@ namespace Proyecto_Final_Programación_Estructurada
             do
             {
                 val = true;
-                //index++;
-                Console.Write("Nombre del Estudiante N*{0}: ", index);
-                nom = Console.ReadLine().ToUpper();                
-                Console.Write("Apellido del Estudiante N*{0}: ", index);
-                ape = Console.ReadLine().ToUpper();                
-                Console.Write("Nota de la prueba (/20) del Estudiante N*{0}:  ", index);
-                nota = Console.ReadLine();
+                Console.Write("Nombre del Estudiante N*{0}: ", index); nom = Console.ReadLine().ToUpper();                
+                Console.Write("Apellido del Estudiante N*{0}: ", index); ape = Console.ReadLine().ToUpper();
+                while (true)
+                {
+                    try
+                    {
+                        Console.Write("Nota de la prueba (/20) del Estudiante N*{0}:  ", index);
+                        nota = Convert.ToDouble(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Error: Valor ingresado no valido.");
+                        continue;
+                    }
+                    break;
+                }
                 Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index);
-                exam = Console.ReadLine();
+                exam = Convert.ToDouble(Console.ReadLine());
 
                 do
                 {
                     Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index);
                     asis = int.Parse(Console.ReadLine());
-                    if (asis == 0)
-                    {
-                        Console.Write("El estudiante nunca asistio.");
-                    }
                     if (asis > 20 || asis < 0)
                     {
                         Console.Write("Favor ingresar dentro del regimen establecido");
                     }
                 }
                 while (asis > 20 || asis < 0);
-
+                InicializarValores(nom,ape,nota,exam,asis, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref index);
 
                 Console.Write("Desea ingresar otro estudiante? (S/N)");
                 res = Console.ReadLine();
@@ -178,6 +184,17 @@ namespace Proyecto_Final_Programación_Estructurada
             p_examenesEstudiantes = new double[100];
             p_asistenciaEstudiantes = new int[100];
             p_aprobacionEstudiantes = new bool[100];
+        }
+
+        // Inicializa nuevos estudiantes.
+        static void InicializarValores(string nom, string ape, double nota, double exam, int asis, ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes, ref double[] examenEstudiantes, ref int[] asistenciaEstudiantes, ref int posEstu)
+        {
+            nombresEstudiantes[posEstu] = nom;
+            apellidoEstudiantes[posEstu] = ape;
+            notasEstudiantes[posEstu] = nota;
+            examenEstudiantes[posEstu] = exam;
+            asistenciaEstudiantes[posEstu] = asis;            
+            posEstu++;
         }
 
         // Crea estudiantes para casos de prueba.
