@@ -10,22 +10,24 @@ namespace Proyecto_Final_Programación_Estructurada
     {
         static void Main(string[] args)
         {
-            #region Variables 
+             #region Variables 
 
             // Variables que almacenan a todos los estudiantes y determinan los parametros para serlo.
-            string[][] nombresEstudiantes;
-            double[][] notasEstudiantes;
-            int[][] asistenciasEstudiantes;
-            bool[][] aprobacionEstudiantes;
+            string[] nombresEstudiantes;
+            string[] apellidosEstudiantes;
+            double[] pruebasEstudiantes;
+            double[] examenesEstudiantes;
+            int[] asistenciasEstudiantes;
+            bool[] aprobacionEstudiantes;
             // Variable que establece la cantidad de estudiantes ingresados.
             int index = 0;
-            
+
             // Variables que definen el ingreso de un estudiante individual.
             string nom, ape, nota, exam;
             int asis;
             string res;
             bool val = false;
-            
+
             // Variable para gestionar menus.            
             string opcionString1 = null;
 
