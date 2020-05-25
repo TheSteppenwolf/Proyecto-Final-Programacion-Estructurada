@@ -109,12 +109,12 @@ namespace Proyecto_Final_Programación_Estructurada
                         {
                             Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index);
                             asis = int.Parse(Console.ReadLine());
-                            if (asis > 20 || asis < 0)
+                            if (asis > 20 || asis < 1)
                             {
                                 Console.WriteLine("Error: Ingresar informacion dentro del regimen establecido");
                             }
                         }
-                        while (asis > 20 || asis < 0);
+                        while (asis > 20 || asis < 1);
                     }
                     catch
                     {
