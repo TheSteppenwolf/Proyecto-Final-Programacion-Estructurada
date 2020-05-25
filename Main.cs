@@ -51,6 +51,8 @@ namespace Proyecto_Final_Programación_Estructurada
                 val = true;
                 Console.Write("Nombre del Estudiante N*{0}: ", index); nom = Console.ReadLine().ToUpper();                
                 Console.Write("Apellido del Estudiante N*{0}: ", index); ape = Console.ReadLine().ToUpper();
+
+                // Validación de entrada correcta de información de la nota de la prueba.
                 while (true)
                 {
                     try
@@ -65,19 +67,48 @@ namespace Proyecto_Final_Programación_Estructurada
                     }
                     break;
                 }
-                Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index);
-                exam = Convert.ToDouble(Console.ReadLine());
 
-                do
+                // Validación de entrada correcta de información de la nota del examen.
+                while (true)
                 {
-                    Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index);
-                    asis = int.Parse(Console.ReadLine());
-                    if (asis > 20 || asis < 0)
+                    try
                     {
-                        Console.Write("Favor ingresar dentro del regimen establecido");
+                        Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index);
+                        exam = Convert.ToDouble(Console.ReadLine());
                     }
+                    catch
+                    {
+                        Console.WriteLine("Error: Valor ingresado no valido.");
+                        continue;
+                    }
+                    break;
                 }
-                while (asis > 20 || asis < 0);
+
+                // Validación de entrada correcta de información de la asistencia.
+                while (true)
+                {
+                    try
+                    {
+                        do
+                        {
+                            Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index);
+                            asis = int.Parse(Console.ReadLine());
+                            if (asis > 20 || asis < 0)
+                            {
+                                Console.Write("Favor ingresar dentro del regimen establecido");
+                            }
+                        }
+                        while (asis > 20 || asis < 0);
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Error: Valor ingresado no valido.");
+                        continue;
+                    }
+                    break;
+                }
+
+                // Creación de nuevo estudiante en base a la información ingresada.
                 InicializarValores(nom,ape,nota,exam,asis, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref index);
 
                 Console.Write("Desea ingresar otro estudiante? (S/N)");
@@ -89,7 +120,7 @@ namespace Proyecto_Final_Programación_Estructurada
             Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
 
             #endregion
-
+                
             #region Menu de desplegue de información
 
 
