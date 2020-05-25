@@ -56,9 +56,17 @@ namespace Proyecto_Final_Programación_Estructurada
                 while (true)
                 {
                     try
-                    {
-                        Console.Write("Nota de la prueba (/20) del Estudiante N*{0}:  ", index);
-                        nota = Convert.ToDouble(Console.ReadLine());
+                    {                        
+                        do
+                        {
+                            Console.Write("Nota de la prueba (/20) del Estudiante N*{0}:  ", index);
+                            nota = Convert.ToDouble(Console.ReadLine());
+                            if (nota > 20 || nota < 0)
+                            {
+                                Console.WriteLine("Error: Ingresar informacion dentro del regimen establecido");
+                            }
+                        }
+                        while (nota > 20 || nota < 0);
                     }
                     catch
                     {
@@ -72,9 +80,17 @@ namespace Proyecto_Final_Programación_Estructurada
                 while (true)
                 {
                     try
-                    {
-                        Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index);
-                        exam = Convert.ToDouble(Console.ReadLine());
+                    {                        
+                        do
+                        {
+                            Console.Write("Nota Examen (/20) del Estudiante N*{0}: ", index);
+                            exam = Convert.ToDouble(Console.ReadLine());
+                            if (exam > 20 || exam < 0)
+                            {
+                                Console.WriteLine("Error: Ingresar informacion dentro del regimen establecido");
+                            }
+                        }
+                        while (exam > 20 || exam < 0);
                     }
                     catch
                     {
@@ -95,7 +111,7 @@ namespace Proyecto_Final_Programación_Estructurada
                             asis = int.Parse(Console.ReadLine());
                             if (asis > 20 || asis < 0)
                             {
-                                Console.Write("Favor ingresar dentro del regimen establecido");
+                                Console.WriteLine("Error: Ingresar informacion dentro del regimen establecido");
                             }
                         }
                         while (asis > 20 || asis < 0);
@@ -111,7 +127,7 @@ namespace Proyecto_Final_Programación_Estructurada
                 // Creación de nuevo estudiante en base a la información ingresada.
                 InicializarValores(nom,ape,nota,exam,asis, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref index);
 
-                Console.Write("Desea ingresar otro estudiante? (S/N)");
+                Console.Write("Desea ingresar otro estudiante? (S/N): ");
                 res = Console.ReadLine();
                 if (res.ToUpper().Equals("N")) val = false;
                 Console.WriteLine();
