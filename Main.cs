@@ -44,13 +44,13 @@ namespace Proyecto_Final_Programación_Estructurada
 
             #endregion
 
-            #region Ingreso Estudiantes
+             #region Ingreso Estudiantes
 
             Console.WriteLine("Lista de estudiantes: \n ");
             do
             {
-                Console.Write("Nombre del Estudiante N*{0}: ", index); nom = Console.ReadLine().ToUpper();                
-                Console.Write("Apellido del Estudiante N*{0}: ", index); ape = Console.ReadLine().ToUpper();
+                Console.Write("Nombre del Estudiante N*{0}: ", index + 1); nom = Console.ReadLine().ToUpper();                
+                Console.Write("Apellido del Estudiante N*{0}: ", index + 1); ape = Console.ReadLine().ToUpper();
 
                 // Validación de entrada correcta de información de la nota de la prueba.
                 while (true)
@@ -136,7 +136,7 @@ namespace Proyecto_Final_Programación_Estructurada
                 } while (res != "S" & res != "N");
 
                 // Salida del loop.
-                if (res.ToUpper().Equals("N")) { break; }
+                if (res.Equals("N")) { break; }
 
                 // Cambio de colores aleatorios.
                 PantallaPintada(); Console.Clear();
