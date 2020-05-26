@@ -131,7 +131,7 @@ namespace Proyecto_Final_Programación_Estructurada
                 do
                 {
                     Console.Write("Desea ingresar otro estudiante? (S/N): ");
-                    res = Console.ReadLine();
+                    res = Console.ReadLine().ToUpper();
                     if (res != "S" & res != "N") Console.WriteLine("Error: Opcion ingresada no valida.");
                 } while (res != "S" & res != "N");
 
