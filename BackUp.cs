@@ -27,10 +27,9 @@ namespace Proyecto_Final_Programación_Estructurada
             double nota, exam;
             int asis;
             string res;
-            bool val = false;
 
             // Variable para gestionar menus.            
-            string opcionString1 = null;
+            string opcionString1 = null, opcionString2 = null;
 
             #endregion
            
@@ -39,7 +38,8 @@ namespace Proyecto_Final_Programación_Estructurada
             // Inicializa los jagged array para su uso.
             InicializarValores(out nombresEstudiantes, out apellidosEstudiantes, out pruebasEstudiantes, out examenesEstudiantes, out asistenciasEstudiantes, out aprobacionEstudiantes);
             // Creación de estudiantes para casos de prueba.
-            InicializarValores(ref index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+            // Se comenta la función para unicamente ingresar nuevos datos.
+            //InicializarValores(ref index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
 
             #endregion
 
@@ -48,9 +48,8 @@ namespace Proyecto_Final_Programación_Estructurada
             Console.WriteLine("Lista de estudiantes: \n ");
             do
             {
-                val = true;
-                Console.Write("Nombre del Estudiante N*{0}: ", index); nom = Console.ReadLine().ToUpper();                
-                Console.Write("Apellido del Estudiante N*{0}: ", index); ape = Console.ReadLine().ToUpper();
+                Console.Write("Nombre del Estudiante N*{0}: ", index + 1); nom = Console.ReadLine().ToUpper();                
+                Console.Write("Apellido del Estudiante N*{0}: ", index + 1); ape = Console.ReadLine().ToUpper();
 
                 // Validación de entrada correcta de información de la nota de la prueba.
                 while (true)
@@ -109,12 +108,12 @@ namespace Proyecto_Final_Programación_Estructurada
                         {
                             Console.Write("Asistencia del Estudiante N*{0}: (1-20)", index);
                             asis = int.Parse(Console.ReadLine());
-                            if (asis > 20 || asis < 0)
+                            if (asis > 20 || asis < 1)
                             {
                                 Console.WriteLine("Error: Ingresar informacion dentro del regimen establecido");
                             }
                         }
-                        while (asis > 20 || asis < 0);
+                        while (asis > 20 || asis < 1);
                     }
                     catch
                     {
@@ -127,24 +126,37 @@ namespace Proyecto_Final_Programación_Estructurada
                 // Creación de nuevo estudiante en base a la información ingresada.
                 InicializarValores(nom,ape,nota,exam,asis, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref index);
 
-                Console.Write("Desea ingresar otro estudiante? (S/N): ");
-                res = Console.ReadLine();
-                if (res.ToUpper().Equals("N")) val = false;
-                Console.WriteLine();
+                // Validación e ingreso de opciones para ingresar nuevos estudiantes.
+                do
+                {
+                    Console.Write("Desea ingresar otro estudiante? (S/N): ");
+                    res = Console.ReadLine().ToUpper();
+                    if (res != "S" & res != "N") Console.WriteLine("Error: Opcion ingresada no valida.");
+                } while (res != "S" & res != "N");
+
+                // Salida del loop.
+                if (res.Equals("N")) { break; }
+
+                // Cambio de colores aleatorios.
+                PantallaPintada(); Console.Clear();
             }
-            while (val);
-            Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
+            while (true);
+
+            // Vuelta a la normalidad para una mejor presentación de la información del programa.
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
 
             #endregion
 
             #region Menu de desplegue de información
 
 
-            while (opcionString1 != "5")
+            while (opcionString1 != "4")
             {
                 Console.WriteLine("SEFIAN: Controlador de notas.");
                 Console.WriteLine("Escoja la opción que desea para la visualizacion del registro:");
-                Console.WriteLine("\t1.Por Nombre en forma ascendente.\n\t2.Por apellido en forma descendente.\n\t3.Por nota de la prueba en forma ascendente.\n\t4.Por nota del examen de forma descendente.\n\t5.Salir.");
+                Console.WriteLine("\t1.Por Nombre en forma ascendente.\n\t2.Por apellido en forma descendente.\n\t3.Por notas de manera ascendente o descendente.\n\t4.Salir.");
                 Console.Write("Opcion: "); opcionString1 = Console.ReadLine();
                 Console.Clear();
                 switch(opcionString1)
@@ -173,39 +185,94 @@ namespace Proyecto_Final_Programación_Estructurada
 
                     #endregion
 
-                    #region Por nota de la prueba de manera ascendente
+                    #region Por notas de manera ascendente o descendente.
 
                     case "3":
-                        // Se llama a la función para el ordenamiento según lo requerido.
-                        PruebaAscendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
-                        // Se llama a la función de impresión de los estudiantes.
-                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
-                        Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
+                        while(opcionString2 != "5")
+                        {
+                            Console.WriteLine("Escoja la opción que desea para la visualización del registro:");
+                            Console.WriteLine("\t1.Por prueba en forma ascendente.\n\t2.Por prueba en forma descendente.\n\t3.Por examen en forma ascendente.\n\t4.Por examen en forma descendente");
+                            Console.WriteLine("\t5.Volver al menu principal.");
+                            Console.Write("Opcion: "); opcionString2 = Console.ReadLine();
+                            Console.Clear(); 
+                            switch(opcionString2)
+                            {
+
+                                #region Por prueba de manera ascendente.
+
+                                case "1":
+                                    // Se llama a la función de ordenamiento según lo requerido.
+                                    NotasAscendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    // Se llama a la función de impresión de los estudiantes.
+                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
+                                    break;
+
+                                #endregion
+
+                                #region Por prueba de manera descendente.
+
+                                case "2":
+                                    // Se llama a la función de ordenamiento según lo requerido, pero cambiado el orden del llamamiento de los array de pruebasEstudiantes y examenesEstudiantes para reutilizar funciones.
+                                    NotasDescendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref examenesEstudiantes, ref pruebasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    // Se llama a la función de impresión de los estudiantes.
+                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
+                                    break;
+
+                                #endregion
+
+                                #region Por examen de manera ascendente.
+
+                                case "3":
+                                    // Se llama a la función de ordenamiento según lo requerido, pero cambiado el orden del llamamiento de los array de pruebasEstudiantes y examenesEstudiantes para reutilizar funciones.
+                                    NotasAscendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref examenesEstudiantes, ref pruebasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    // Se llama a la función de impresión de los estudiantes.
+                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
+                                    break;
+
+                                #endregion
+
+                                #region Por prueba de manera descendente.
+
+                                case "4":
+                                    // Se llama a la función de ordenamiento según lo requerido.
+                                    NotasDescendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    // Se llama a la función de impresión de los estudiantes.
+                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
+                                    break;
+
+                                #endregion
+
+                                // Regreso al menu principal.
+                                case "5":
+                                    Console.Clear();
+                                    break;
+
+                                // En caso de seleccionar opción no válida.
+                                default:
+                                    Procesando();
+                                    Console.WriteLine("Error: Opcion no valida.");
+                                    Console.WriteLine("\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
+                                    break;
+                            }
+                        }
+                        opcionString2 = null;
                         break;
 
                     #endregion
-
-                    #region Por nota del examen de manera descendente
-
-                    case "4":
-                        // Se llama a la función para el ordenamiento según lo requerido.
-                        ExamenDescendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
-                        // Se llama a la función de impresión de los estudiantes.
-                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
-                        Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
-                        break;
-
-                    #endregion                  
-
+                    
                     // Salida del programa. 
-                    case "5":
+                    case "4":                        
                         Console.WriteLine("Cerrando el programa...");
                         Procesando();
                         Console.WriteLine("Gracias por utilizar nuestro programa!");
                         break;
 
                     // En caso de seleccionar opción no válida.
-                    default:
+                    default:                        
                         Procesando();
                         Console.WriteLine("Error: Opcion no valida.");                        
                         Console.WriteLine("\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
@@ -385,8 +452,8 @@ namespace Proyecto_Final_Programación_Estructurada
             }
         }
 
-        // Ordena de manera ascendente a los estudiantes considerando su nota de la prueba.
-        static void PruebaAscendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
+        // Ordena de manera ascendente a los estudiantes considerando su nota en base a lo que desee el usuario.
+        static void NotasAscendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string tempNombre, tempApellido;
             double tempPrueba, tempExamen;
@@ -426,8 +493,8 @@ namespace Proyecto_Final_Programación_Estructurada
             }
         }
 
-        // Ordena de manera descendente a los estudiantes considerando su nota de la prueba.
-        static void ExamenDescendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
+        // Ordena de manera descendente a los estudiantes considerando su nota en base a lo que desee el usuario.
+        static void NotasDescendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string tempNombre, tempApellido;
             double tempPrueba, tempExamen;
@@ -594,6 +661,29 @@ namespace Proyecto_Final_Programación_Estructurada
             else { Console.BackgroundColor = ConsoleColor.Black; Console.ForegroundColor = ConsoleColor.White; }
             for (int i = 0; i < 110; i++) Console.Write(" ");
             Console.SetCursorPosition(0, p_pointY);
+        }
+
+        // Cambia el color de la pantalla de forma aleatoria.
+        static void PantallaPintada()
+        {
+            // Declaración de objetos tipo random.
+            Random rand = new Random();           
+            
+            // Inicialización de un arreglo de objetos tipo color con todos sus valores.
+            ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
+            
+            // Variable que almacenará un número aleatorio para designar un color aleatorio.
+            int bgColor = rand.Next(0, 15);            
+
+            // Contado que permitirá recuperar el color aleatorio.
+            int counter = 0;
+
+            // Recuperar un colo aleatorio en base al número aleatorio que se recupero.
+            foreach(var iter in colors) { if (counter == bgColor) Console.BackgroundColor = iter; counter++; }
+
+            // En base al color de la pantalla se determina el color de la letra.
+            if (bgColor < 9) Console.ForegroundColor = ConsoleColor.White;
+            else Console.ForegroundColor = ConsoleColor.Black;
         }
 
         #endregion
