@@ -651,6 +651,29 @@ namespace Proyecto_Final_Programación_Estructurada
             Console.SetCursorPosition(0, p_pointY);
         }
 
+        // Cambia el color de la pantalla de forma aleatoria.
+        static void PantallaPintada()
+        {
+            // Declaración de objetos tipo random.
+            Random rand = new Random();           
+            
+            // Inicialización de un arreglo de objetos tipo color con todos sus valores.
+            ConsoleColor[] colors = (ConsoleColor[])ConsoleColor.GetValues(typeof(ConsoleColor));
+            
+            // Variable que almacenará un número aleatorio para designar un color aleatorio.
+            int bgColor = rand.Next(0, 15);            
+
+            // Contado que permitirá recuperar el color aleatorio.
+            int counter = 0;
+
+            // Recuperar un colo aleatorio en base al número aleatorio que se recupero.
+            foreach(var iter in colors) { if (counter == bgColor) Console.BackgroundColor = iter; counter++; }
+
+            // En base al color de la pantalla se determina el color de la letra.
+            if (bgColor < 9) Console.ForegroundColor = ConsoleColor.White;
+            else Console.ForegroundColor = ConsoleColor.Black;
+        }
+        
         #endregion
 
         #endregion
