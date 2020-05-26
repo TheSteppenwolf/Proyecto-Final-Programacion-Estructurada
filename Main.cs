@@ -43,12 +43,11 @@ namespace Proyecto_Final_Programación_Estructurada
 
             #endregion
 
-            #region Ingreso Estudiantes
+           #region Ingreso Estudiantes
 
             Console.WriteLine("Lista de estudiantes: \n ");
             do
             {
-                val = true;
                 Console.Write("Nombre del Estudiante N*{0}: ", index); nom = Console.ReadLine().ToUpper();                
                 Console.Write("Apellido del Estudiante N*{0}: ", index); ape = Console.ReadLine().ToUpper();
 
@@ -128,12 +127,20 @@ namespace Proyecto_Final_Programación_Estructurada
                 InicializarValores(nom,ape,nota,exam,asis, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref index);
 
                 Console.Write("Desea ingresar otro estudiante? (S/N): ");
-                res = Console.ReadLine();
-                if (res.ToUpper().Equals("N")) val = false;
-                Console.WriteLine();
+                res = Console.ReadLine();                
+
+                // Salida del loop.
+                if (res.ToUpper().Equals("N")) { break; }
+
+                // Cambio de colores aleatorios.
+                PantallaPintada(); Console.Clear();
             }
-            while (val);
-            Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
+            while (true);
+
+            // Vuelta a la normalidad para una mejor presentación de la información del programa.
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Clear();
 
             #endregion
 
