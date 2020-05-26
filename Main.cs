@@ -27,7 +27,6 @@ namespace Proyecto_Final_Programación_Estructurada
             double nota, exam;
             int asis;
             string res;
-            bool val = false;
 
             // Variable para gestionar menus.            
             string opcionString1 = null, opcionString2 = null;
@@ -44,7 +43,7 @@ namespace Proyecto_Final_Programación_Estructurada
 
             #endregion
 
-             #region Ingreso Estudiantes
+            #region Ingreso Estudiantes
 
             Console.WriteLine("Lista de estudiantes: \n ");
             do
@@ -136,7 +135,7 @@ namespace Proyecto_Final_Programación_Estructurada
                 } while (res != "S" & res != "N");
 
                 // Salida del loop.
-                if (res.Equals("N")) { break; }
+                if (res.Equals("N")) break; 
 
                 // Cambio de colores aleatorios.
                 PantallaPintada(); Console.Clear();
@@ -266,14 +265,14 @@ namespace Proyecto_Final_Programación_Estructurada
                     #endregion
                     
                     // Salida del programa. 
-                    case "4":
+                    case "4":                        
                         Console.WriteLine("Cerrando el programa...");
                         Procesando();
                         Console.WriteLine("Gracias por utilizar nuestro programa!");
                         break;
 
                     // En caso de seleccionar opción no válida.
-                    default:
+                    default:                        
                         Procesando();
                         Console.WriteLine("Error: Opcion no valida.");                        
                         Console.WriteLine("\nPresione cualquier tecla para continuar..."); Console.ReadKey(); Console.Clear();
@@ -539,7 +538,7 @@ namespace Proyecto_Final_Programación_Estructurada
 
         #region Impresión de los estudiantes
 
-        // Imprime a todos los estudiantes en un respectivo formato tipo tabla.
+        // Imprime a todos los estudiantes en un respectivo formato tipo tabla con tabulación definida y colores para mejor visualización.
         static void GetEstudiantes(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidoEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string temp;
@@ -549,12 +548,12 @@ namespace Proyecto_Final_Programación_Estructurada
 
             // Impresión con formato amigable para el usuario.
             // Se evalua la tabulación dependiendo del string más largo, si no es del estudiante se toma de su identificador, puede ser "Nombre" como cualquier otro.
-            if (MayorNombre(p_index, p_nombresEstudiantes) > "Nombre".Length) counterX = MayorNombre(p_index, p_nombresEstudiantes) + 8;
+            if (Mayor(p_index, p_nombresEstudiantes) > "Nombre".Length) counterX = Mayor(p_index, p_nombresEstudiantes) + 8;
             else counterX = "Nombre".Length + 8;
             Console.Write("Nombre");
             // Se coloca en la posición deseada para respetar un mismo margen.
             Console.SetCursorPosition(counterX, counterY);
-            if (MayorApellido(p_index, p_apellidoEstudiantes) > "Apellido".Length) counterX += MayorApellido(p_index, p_nombresEstudiantes) + 8;
+            if (Mayor(p_index, p_apellidoEstudiantes) > "Apellido".Length) counterX += Mayor(p_index, p_nombresEstudiantes) + 8;
             else counterX += "Apellido".Length + 8;
             Console.Write("Apellido");
             Console.SetCursorPosition(counterX, counterY);
@@ -584,12 +583,12 @@ namespace Proyecto_Final_Programación_Estructurada
 
                 // Impresión con formato amigable para el usuario.
                 // Se evalua la tabulación dependiendo del string más largo, si no es del estudiante se toma de su identificador, puede ser "Nombre" como cualquier otro.
-                if (MayorNombre(p_index, p_nombresEstudiantes) > "Nombre".Length) counterX = MayorNombre(p_index, p_nombresEstudiantes) + 8;
+                if (Mayor(p_index, p_nombresEstudiantes) > "Nombre".Length) counterX = Mayor(p_index, p_nombresEstudiantes) + 8;
                 else counterX = "Nombre".Length + 8;
                 Console.Write($"{p_nombresEstudiantes[i]}");
                 // Se coloca en la posición deseada para respetar un mismo margen.
                 Console.SetCursorPosition(counterX, counterY);
-                if (MayorApellido(p_index, p_apellidoEstudiantes) > "Apellido".Length) counterX += MayorApellido(p_index, p_nombresEstudiantes) + 8;
+                if (Mayor(p_index, p_apellidoEstudiantes) > "Apellido".Length) counterX += Mayor(p_index, p_nombresEstudiantes) + 8;
                 else counterX += "Apellido".Length + 8;
                 Console.Write($"{p_apellidoEstudiantes[i]}");                
                 Console.SetCursorPosition(counterX, counterY);
@@ -627,29 +626,15 @@ namespace Proyecto_Final_Programación_Estructurada
             }           
         }
 
-        // Devuelve el largo del nombre más largo de los estudiantes.
-        static int MayorNombre(int p_index ,string[] p_nombresEstudiantes)
+        // Devuelve el largo del nombre o apellido más largo de los estudiantes.
+        static int Mayor(int p_index ,string[] p_stringEstudiantes)
         {
             int temp = 0;
             for(int i = 0; i < p_index; i++)
             {
-                if(p_nombresEstudiantes[i].Length > temp)
+                if(p_stringEstudiantes[i].Length > temp)
                 {
-                    temp = p_nombresEstudiantes[i].Length;
-                }
-            }
-            return temp;
-        }
-
-        // Devuelve el largo del apellido más largo de los estudiantes.
-        static int MayorApellido(int p_index, string[] p_apellidosEstudiantes)
-        {
-            int temp = 0;
-            for (int i = 0; i < p_index; i++)
-            {
-                if (p_apellidosEstudiantes[i].Length > temp)
-                {
-                    temp = p_apellidosEstudiantes[i].Length;
+                    temp = p_stringEstudiantes[i].Length;
                 }
             }
             return temp;
@@ -686,7 +671,7 @@ namespace Proyecto_Final_Programación_Estructurada
             if (bgColor < 9) Console.ForegroundColor = ConsoleColor.White;
             else Console.ForegroundColor = ConsoleColor.Black;
         }
-        
+
         #endregion
 
         #endregion
