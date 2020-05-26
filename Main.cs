@@ -39,6 +39,7 @@ namespace Proyecto_Final_Programación_Estructurada
             // Inicializa los jagged array para su uso.
             InicializarValores(out nombresEstudiantes, out apellidosEstudiantes, out pruebasEstudiantes, out examenesEstudiantes, out asistenciasEstudiantes, out aprobacionEstudiantes);
             // Creación de estudiantes para casos de prueba.
+            // Se comenta la función para unicamente ingresar nuevos datos.
             //InicializarValores(ref index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
 
             #endregion
