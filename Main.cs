@@ -43,7 +43,7 @@ namespace Proyecto_Final_Programación_Estructurada
 
             #endregion
 
-           #region Ingreso Estudiantes
+            #region Ingreso Estudiantes
 
             Console.WriteLine("Lista de estudiantes: \n ");
             do
@@ -126,8 +126,13 @@ namespace Proyecto_Final_Programación_Estructurada
                 // Creación de nuevo estudiante en base a la información ingresada.
                 InicializarValores(nom,ape,nota,exam,asis, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref index);
 
-                Console.Write("Desea ingresar otro estudiante? (S/N): ");
-                res = Console.ReadLine();                
+                // Validación e ingreso de opciones para ingresar nuevos estudiantes.
+                do
+                {
+                    Console.Write("Desea ingresar otro estudiante? (S/N): ");
+                    res = Console.ReadLine();
+                    if (res != "S" & res != "N") Console.WriteLine("Error: Opcion ingresada no valida.");
+                } while (res != "S" & res != "N");
 
                 // Salida del loop.
                 if (res.ToUpper().Equals("N")) { break; }
