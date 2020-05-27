@@ -249,7 +249,7 @@ namespace desviacionstandar
     {
         static void Main(string[] args)
         {
-            double[] promediogeneral = { 10,18,16 };
+            double[] promediogeneral = { 10,16,18 };
             Console.WriteLine("{0:#.##}",desviacionstandar(promediogeneral.Length, promediogeneral));
 
             Console.ReadKey();
@@ -267,19 +267,24 @@ namespace desviacionstandar
         {
             double total=0;
             double result = 0;
+            double tit;
+            double cuadra;
+            double[] sum=new double [100];
             for (int i = 0; i < promedio.Length; i++)
             {
                 double nume = (promedio[i] - promediogeneral(index,promedio));
                 double[] tito = { nume };
+                //Console.WriteLine(nume);
                 for (int j = 0; j < tito.Length; j++)
                 {
-                    double cuadra = (tito[j] * tito[j]);
-                    double[] sum = { cuadra };
+                    cuadra = (tito[j] * tito[j]);
+                    sum[j] =  cuadra ;
+                    //Console.WriteLine(cuadra);
                     for (int q = 0; q < sum.Length; q++)
                     {
                         total += sum[q];
-                        double tit;
-                        tit = (total / i - 1);
+                        tit = (total / i );
+                        //Console.WriteLine(total);
                         result = Math.Sqrt(tit);
                     }
                 }
