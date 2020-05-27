@@ -36,7 +36,7 @@ namespace Proyecto_Final_Programación_Estructurada
            
             #region Constructores
 
-            // Inicializa los jagged array para su uso con el maximo de estudiantes que se desea.
+            // Inicializa los array para su uso con el maximo de estudiantes que se desea.
             InicializarValores(out nombresEstudiantes, out apellidosEstudiantes, out pruebasEstudiantes, out examenesEstudiantes, out promedioEstudiantes, out asistenciasEstudiantes, out aprobacionEstudiantes, 1000);            
 
             #endregion
