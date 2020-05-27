@@ -249,39 +249,42 @@ namespace desviacionstandar
     {
         static void Main(string[] args)
         {
-            double[] nums = { 15, 12, 13, 15, 10 };
+            double[] promediogeneral = { 10,18,16 };
+            Console.WriteLine("{0:#.##}",desviacionstandar(promediogeneral.Length, promediogeneral));
+
+            Console.ReadKey();
+        }
+        static double promediogeneral(int index,double [] promediogeneral)
+        {
             double suma = 0;
-            double total = 0;
-            foreach (double calificacion in nums)
+            foreach (double calificacion in promediogeneral)
             {
                 suma += calificacion;
             }
-            double promedio = suma / nums.Length;
-            Console.WriteLine("Promedio : " + promedio);
-            for(int i=0;i<nums.Length;i++)
+            return suma / index;
+        }
+        static double desviacionstandar(int index, double[] promedio)
+        {
+            double total=0;
+            double result = 0;
+            for (int i = 0; i < promedio.Length; i++)
             {
-                double nume = (nums[i] - promedio);
+                double nume = (promedio[i] - promediogeneral(index,promedio));
                 double[] tito = { nume };
-                Console.WriteLine("suma {0} es : {1}", (i+1), nume);
-                for(int j=0;j<tito.Length;j++)
+                for (int j = 0; j < tito.Length; j++)
                 {
                     double cuadra = (tito[j] * tito[j]);
                     double[] sum = { cuadra };
-                    Console.WriteLine(cuadra);
-                    for(int q=0;q<sum.Length;q++)
+                    for (int q = 0; q < sum.Length; q++)
                     {
                         total += sum[q];
-
-                        Console.WriteLine(total);
                         double tit;
                         tit = (total / i - 1);
-                        Console.WriteLine(tit);
-                        double result = Math.Sqrt(tit);
-                        Console.WriteLine(result);
+                        result = Math.Sqrt(tit);
                     }
                 }
             }
-            Console.ReadKey();
-        }    
+            return result;
+        }
     }
 }
