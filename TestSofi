@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proyecto_Final_Programación_Estructurada
 {
@@ -38,10 +34,6 @@ namespace Proyecto_Final_Programación_Estructurada
 
             // Inicializa los jagged array para su uso.
             InicializarValores(out nombresEstudiantes, out apellidosEstudiantes, out pruebasEstudiantes, out examenesEstudiantes,out promedioEstudiantes, out asistenciasEstudiantes, out aprobacionEstudiantes);
-            // Creación de estudiantes para casos de prueba.
-            // Se comenta la función para unicamente ingresar nuevos datos.
-            //InicializarValores(ref index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
-
             #endregion
 
             #region Ingreso Estudiantes
@@ -167,9 +159,9 @@ namespace Proyecto_Final_Programación_Estructurada
 
                     case "1":
                         // Se llama a la función para el ordenamiento según lo requerido.
-                        ascendenteNombre(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        ascendenteNombre(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes,ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         // Se llama a la función de impresión de los estudiantes.
-                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                         break;
 
@@ -179,9 +171,9 @@ namespace Proyecto_Final_Programación_Estructurada
 
                     case "2":
                         // Se llama a la función para el ordenamiento según lo requerido.
-                        descendenteApellido(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        descendenteApellido(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes,ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         // Se llama a la función de impresión de los estudiantes.
-                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                        GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                         Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                         break;
 
@@ -204,9 +196,9 @@ namespace Proyecto_Final_Programación_Estructurada
 
                                 case "1":
                                     // Se llama a la función de ordenamiento según lo requerido.
-                                    NotasAscendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    NotasAscendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes,ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                                     // Se llama a la función de impresión de los estudiantes.
-                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                                     Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                                     break;
 
@@ -216,9 +208,9 @@ namespace Proyecto_Final_Programación_Estructurada
 
                                 case "2":
                                     // Se llama a la función de ordenamiento según lo requerido, pero cambiado el orden del llamamiento de los array de pruebasEstudiantes y examenesEstudiantes para reutilizar funciones.
-                                    NotasDescendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref examenesEstudiantes, ref pruebasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    NotasDescendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes,ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                                     // Se llama a la función de impresión de los estudiantes.
-                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                                     Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                                     break;
 
@@ -228,9 +220,9 @@ namespace Proyecto_Final_Programación_Estructurada
 
                                 case "3":
                                     // Se llama a la función de ordenamiento según lo requerido, pero cambiado el orden del llamamiento de los array de pruebasEstudiantes y examenesEstudiantes para reutilizar funciones.
-                                    NotasAscendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref examenesEstudiantes, ref pruebasEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    NotasAscendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes,ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                                     // Se llama a la función de impresión de los estudiantes.
-                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                                     Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                                     break;
 
@@ -240,9 +232,9 @@ namespace Proyecto_Final_Programación_Estructurada
 
                                 case "4":
                                     // Se llama a la función de ordenamiento según lo requerido.
-                                    NotasDescendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    NotasDescendente(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes,ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                                     // Se llama a la función de impresión de los estudiantes.
-                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
+                                    GetEstudiantes(index, ref nombresEstudiantes, ref apellidosEstudiantes, ref pruebasEstudiantes, ref examenesEstudiantes,ref promedioEstudiantes, ref asistenciasEstudiantes, ref aprobacionEstudiantes);
                                     Console.WriteLine("\n\nPresione cualquier tecla para continuar..."); Console.ReadLine(); Console.Clear();
                                     break;
 
@@ -315,44 +307,6 @@ namespace Proyecto_Final_Programación_Estructurada
             asistenciaEstudiantes[posEstu] = asis;
             posEstu++;
         }
-
-        // Crea estudiantes para casos de prueba.
-        static void InicializarValores(ref int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes,ref double[]p_promedioEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
-        {
-            p_nombresEstudiantes[p_index] = "SEBASTIAN";
-            p_apellidosEstudiantes[p_index] = "TAMAYO";
-            p_pruebasEstudiantes[p_index] = 19;
-            p_examenesEstudiantes[p_index] = 20;
-            p_promedioEstudiantes [p_index] = 16;
-            p_asistenciaEstudiantes[p_index] = 18;
-            p_aprobacionEstudiantes[p_index] = true;
-            p_index++;
-            p_nombresEstudiantes[p_index] = "BRYAN";
-            p_apellidosEstudiantes[p_index] = "CUVI";
-            p_pruebasEstudiantes[p_index] = 17;
-            p_examenesEstudiantes[p_index] = 19;
-            p_promedioEstudiantes[p_index] = 15;
-            p_asistenciaEstudiantes[p_index] = 16;
-            p_aprobacionEstudiantes[p_index] = true;
-            p_index++;
-            p_nombresEstudiantes[p_index] = "SOFIA";
-            p_apellidosEstudiantes[p_index] = "VILLACIS";
-            p_pruebasEstudiantes[p_index] = 20;
-            p_examenesEstudiantes[p_index] = 20;
-            p_promedioEstudiantes[p_index] = 18;
-            p_asistenciaEstudiantes[p_index] = 20;
-            p_aprobacionEstudiantes[p_index] = true;
-            p_index++;
-            p_nombresEstudiantes[p_index] = "VLADIMIR";
-            p_apellidosEstudiantes[p_index] = "PUTIN";
-            p_pruebasEstudiantes[p_index] = 12;
-            p_examenesEstudiantes[p_index] = 13;
-            p_promedioEstudiantes[p_index] = 14;
-            p_asistenciaEstudiantes[p_index] = 10;
-            p_aprobacionEstudiantes[p_index] = false;
-            p_index++;
-        }
-
         #endregion
         #region funciones avanzadas
         // condicion para ver si el estudiante aprobo o no
@@ -372,10 +326,10 @@ namespace Proyecto_Final_Programación_Estructurada
         #region Ordenamiento de los datos del estudiante      
 
         // Ordena de manera ascendente a los estudiantes considerando su nombre.
-        static void ascendenteNombre(int index, ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes, ref double[] examenEstudiantes, ref int[] asistenciaEstudiantes, ref bool[] aprobacionEstudiantes)
+        static void ascendenteNombre(int index, ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes, ref double[] examenEstudiantes,ref double[] promedioEstudiantes, ref int[] asistenciaEstudiantes, ref bool[] aprobacionEstudiantes)
         {
             string itercambiarNombre, itercambiarApellio;
-            double intercambiarNota, intercambioExamen;
+            double intercambiarNota, intercambioExamen, intercambioPromedio;
             int intercambioAsistencia;
             bool intercambioAprobacion;
             for (int i = 1; i < index; i++)
@@ -408,6 +362,11 @@ namespace Proyecto_Final_Programación_Estructurada
                         examenEstudiantes[j - 1] = examenEstudiantes[j];
                         examenEstudiantes[j] = intercambioExamen;
 
+                        //intercambia promedio
+                        intercambioPromedio = promedioEstudiantes[j - 1];
+                        promedioEstudiantes[j - 1] = promedioEstudiantes[j];
+                        promedioEstudiantes[j] = intercambioPromedio;
+
                         //intercambia asistencia
                         intercambioAsistencia = asistenciaEstudiantes[j - 1];
                         asistenciaEstudiantes[j - 1] = asistenciaEstudiantes[j];
@@ -424,10 +383,10 @@ namespace Proyecto_Final_Programación_Estructurada
         }
 
         // Ordena de manera descendente a los estudiantes considerando su apellido.
-        static void descendenteApellido(int p_index, ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes, ref double[] examenEstudiantes, ref int[] asistenciaEstudiantes, ref bool[] aprobacionEstudiantes)
+        static void descendenteApellido(int p_index, ref string[] nombresEstudiantes, ref string[] apellidoEstudiantes, ref double[] notasEstudiantes, ref double[] examenEstudiantes,ref double[] promedioEstudiantes, ref int[] asistenciaEstudiantes, ref bool[] aprobacionEstudiantes)
         {
             string itercambiarNombre, itercambiarApellio;
-            double intercambiarNota, intercambioExamen;
+            double intercambiarNota, intercambioExamen, intercambioPromedio;
             int intercambioAsistencia;
             bool intercambioAprobacion;
             for (int i = 1; i < p_index; i++)
@@ -460,6 +419,11 @@ namespace Proyecto_Final_Programación_Estructurada
                         examenEstudiantes[j - 1] = examenEstudiantes[j];
                         examenEstudiantes[j] = intercambioExamen;
 
+                        //intercambia promedio
+                        intercambioPromedio = promedioEstudiantes[j - 1];
+                        promedioEstudiantes[j - 1] = promedioEstudiantes[j];
+                        promedioEstudiantes[j] = intercambioPromedio;
+
                         //intercambia asistencia
                         intercambioAsistencia = asistenciaEstudiantes[j - 1];
                         asistenciaEstudiantes[j - 1] = asistenciaEstudiantes[j];
@@ -476,10 +440,10 @@ namespace Proyecto_Final_Programación_Estructurada
         }
 
         // Ordena de manera ascendente a los estudiantes considerando su nota en base a lo que desee el usuario.
-        static void NotasAscendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
+        static void NotasAscendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes,ref double[] p_promedioEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string tempNombre, tempApellido;
-            double tempPrueba, tempExamen;
+            double tempPrueba, tempExamen,temPromedio;
             int tempAsistencias;
             bool tempAprobacion;
             for (int i = 0; i < p_index; i++)
@@ -493,14 +457,17 @@ namespace Proyecto_Final_Programación_Estructurada
                         tempApellido = p_apellidosEstudiantes[j];
                         tempPrueba = p_pruebasEstudiantes[j];
                         tempExamen = p_examenesEstudiantes[j];
+                        temPromedio = p_promedioEstudiantes[j];
                         tempAsistencias = p_asistenciaEstudiantes[j];
                         tempAprobacion = p_aprobacionEstudiantes[j];
+
 
                         // Renovar la posición del menor en la posición del mayor.                        
                         p_nombresEstudiantes[j] = p_nombresEstudiantes[j + 1];
                         p_apellidosEstudiantes[j] = p_apellidosEstudiantes[j + 1];
                         p_pruebasEstudiantes[j] = p_pruebasEstudiantes[j + 1];
                         p_examenesEstudiantes[j] = p_examenesEstudiantes[j + 1];
+                        p_promedioEstudiantes[j] = p_promedioEstudiantes[j + 1];
                         p_asistenciaEstudiantes[j] = p_asistenciaEstudiantes[j + 1];
                         p_aprobacionEstudiantes[j] = p_aprobacionEstudiantes[j + 1];
 
@@ -509,6 +476,7 @@ namespace Proyecto_Final_Programación_Estructurada
                         p_apellidosEstudiantes[j + 1] = tempApellido;
                         p_pruebasEstudiantes[j + 1] = tempPrueba;
                         p_examenesEstudiantes[j + 1] = tempExamen;
+                        p_promedioEstudiantes[j + 1] = temPromedio;
                         p_asistenciaEstudiantes[j + 1] = tempAsistencias;
                         p_aprobacionEstudiantes[j + 1] = tempAprobacion;
                     }
@@ -517,10 +485,10 @@ namespace Proyecto_Final_Programación_Estructurada
         }
 
         // Ordena de manera descendente a los estudiantes considerando su nota en base a lo que desee el usuario.
-        static void NotasDescendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
+        static void NotasDescendente(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidosEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenesEstudiantes,ref double[] p_promedioEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string tempNombre, tempApellido;
-            double tempPrueba, tempExamen;
+            double tempPrueba, tempExamen,temPromedio;
             int tempAsistencias;
             bool tempAprobacion;
             for (int i = 0; i < p_index; i++)
@@ -534,6 +502,7 @@ namespace Proyecto_Final_Programación_Estructurada
                         tempApellido = p_apellidosEstudiantes[j];
                         tempPrueba = p_pruebasEstudiantes[j];
                         tempExamen = p_examenesEstudiantes[j];
+                        temPromedio = p_promedioEstudiantes[j];
                         tempAsistencias = p_asistenciaEstudiantes[j];
                         tempAprobacion = p_aprobacionEstudiantes[j];
 
@@ -542,6 +511,7 @@ namespace Proyecto_Final_Programación_Estructurada
                         p_apellidosEstudiantes[j] = p_apellidosEstudiantes[j + 1];
                         p_pruebasEstudiantes[j] = p_pruebasEstudiantes[j + 1];
                         p_examenesEstudiantes[j] = p_examenesEstudiantes[j + 1];
+                        p_promedioEstudiantes[j] = p_promedioEstudiantes[j + 1];
                         p_asistenciaEstudiantes[j] = p_asistenciaEstudiantes[j + 1];
                         p_aprobacionEstudiantes[j] = p_aprobacionEstudiantes[j + 1];
 
@@ -550,6 +520,7 @@ namespace Proyecto_Final_Programación_Estructurada
                         p_apellidosEstudiantes[j + 1] = tempApellido;
                         p_pruebasEstudiantes[j + 1] = tempPrueba;
                         p_examenesEstudiantes[j + 1] = tempExamen;
+                        p_promedioEstudiantes[j + 1] = temPromedio;
                         p_asistenciaEstudiantes[j + 1] = tempAsistencias;
                         p_aprobacionEstudiantes[j + 1] = tempAprobacion;
                     }
@@ -562,7 +533,7 @@ namespace Proyecto_Final_Programación_Estructurada
         #region Impresión de los estudiantes
 
         // Imprime a todos los estudiantes en un respectivo formato tipo tabla con tabulación definida y colores para mejor visualización.
-        static void GetEstudiantes(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidoEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
+        static void GetEstudiantes(int p_index, ref string[] p_nombresEstudiantes, ref string[] p_apellidoEstudiantes, ref double[] p_pruebasEstudiantes, ref double[] p_examenEstudiantes,ref double[]p_promedioEstudiantes, ref int[] p_asistenciaEstudiantes, ref bool[] p_aprobacionEstudiantes)
         {
             string temp;
             int counterX, counterY = 0;
@@ -585,6 +556,9 @@ namespace Proyecto_Final_Programación_Estructurada
             Console.SetCursorPosition(counterX, counterY);
             counterX += "Examen".Length + 8;
             Console.Write("Examen");
+            Console.SetCursorPosition(counterX, counterY);
+            counterX += "Promedio".Length + 8;
+            Console.Write("Promedio");
             Console.SetCursorPosition(counterX, counterY);
             counterX += "Asistencia".Length + 8;
             Console.Write("Asistencia");
@@ -621,6 +595,11 @@ namespace Proyecto_Final_Programación_Estructurada
                 counterX += "Examen".Length + 8;
                 Console.Write($"{p_examenEstudiantes[i]}");
                 Console.SetCursorPosition(counterX, counterY);
+
+                counterX += "Promedio".Length + 8;
+                Console.Write($"{p_promedioEstudiantes[i]}");
+                Console.SetCursorPosition(counterX, counterY);
+
                 counterX += "Asistencias".Length + 7;
                 Console.Write($"{p_asistenciaEstudiantes[i]}");
                 Console.SetCursorPosition(counterX, counterY);
