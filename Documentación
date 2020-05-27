@@ -1,1 +1,239 @@
+PONTIFICIA UNIVERSIDAD CÁTOLICA DEL ECUADOR
+Proyecto Final de Programación Estructurada
+
+Información Preliminar
+Nombres:
+•	Sofía Villacis.
+•	Bryan Cuvi.
+•	Sebastián Tamayo.
+Facultad: Ingeniería en Sistemas.
+Carrera: Tecnologías de la información.
+Fecha de entrega: 27/05/2020.
+Descripción general del programa: 
+	El programa solicitado en el Proyecto Final de Programación Estructurada fue desarrollado en el lenguaje de programación C# .Net framework 4.7.2 enfocado a una aplicación de consola, es decir, el ambiente grafico se verá únicamente por esta. Por otra parte, el programa ha sido realizado únicamente siguiente el paradigma de programación estructurada con el fin de poner en práctica lo aprendido a través de todo el curso; además, se planeó, según lo solicitado, que no se desarrollen listas para el almacenamiento de la información de los estudiantes, por tanto, para ello, únicamente se utilizarán distintos Arrays que en conjunto permitirán establecer lo que sería un estudiante.
+
+Contextos Generales
+Objetivo del proyecto:
+Usted ha sido contratado para realizar un programa que va a ayudar a su facultad para organizar la información de las notas y datos de los estudiantes.
+Información requerida por estudiante:
+•	Nombre.
+•	Apellido.
+•	Nota de la prueba sobre 20.
+•	Nota del examen sobre 20.
+•	Número de asistencias [1-20]
+Tipos de desplegué de información de los estudiantes:
+•	Los registros ordenados de forma ascendente según el nombre.
+•	Los registros ordenados de forma descendente según el apellido.
+•	Los registros ordenados de forma ascendente según la nota.
+•	Los registros ordenados de forma descendente según la nota.
+Formato de desplegué de información de los estudiantes:
+	Se planeo el despliegue de la información en un formato tipo tabla donde se podrá observar lo siguiente:
+•	Nombre del estudiante.
+•	Apellido del estudiante.
+•	Nota de la prueba del estudiante.
+•	Nota del examen del estudiante.
+•	Promedio de las notas del estudiante.
+•	Resultado si aprobó o reprobó.
+Además, por debajo de la tabla de mostrar la desviación estándar de todos los estudiantes seguido del promedio general del curso.
+Requerimientos adicionales:
+•	El programa deberá preguntar si el usuario desea seguir ingresando nuevos estudiantes al registro antes de que se despliegue la información del registro.
+•	El programa deberá poder regresar al menú de opciones de ordenamiento cuantas veces el desee.
+•	El programa deberá mostrar varios colores en la pantalla de manera aleatoria.
+•	El programa debe usar el método burbuja para el ordenamiento de los estudiantes.
+
+
+Detalles Generales y Presentación del Código
+
+Bibliotecas de .Net framework 4.7.2 utilizadas:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+Nombre del programa:
+
+	namespace Proyecto_Final_Programación_Estructurada
+
+Vista previa del código:
+ 
+
+
+
+Detalles Avanzados del Código
+
+Detalles del método Main:
+ 
+
+Región Variables:
+
+ 
+
+La región “Variables” presenta todas las variables utilizadas a lo largo del código, entre ellas, se puede identificar lo siguiente: 
+
+	Línea 16 a línea 22: Las variables declaradas entre el rango dado son aquellas que nos permiten definir a un estudiante, es decir, estas variables son las que hacen que pueda existir un objeto tipo estudiante y poder utilizarlo tanto para recuperar su información como para alterarla. Por otra parte, cada una de estas variables es de tipo array debido a que, además de poder definir al objeto estudiante, permitirá almacenar todos los estudiantes que se deseen ingresar según lo querido por el usuario.
+
+Nota: Únicamente son definidos puesto que se instancian más adelante en la región de constructores.
+
+	Línea 24: La variable declarada como “index” es aquella que nos permitirá conocer la cantidad exacta de estudiantes registrados en el programa.
+	Línea 27 a línea 30: Las variables declaradas entre el rango dado son aquellas que nos permiten definir temporalmente a un estudiante para que luego este sea plasmado dentro de los arrays de la línea 16 a 22, es decir, estas variables alternaran de valores simultáneamente con el fin de distribuir la información de ingreso del estudiante a una única función que establecerá al estudiante en el registro de estudiantes.
+	Línea 33: Estas dos variables tipo string nos permitirán navegar a través del menú de opciones de ordenamiento del registro de estudiantes.	
+
+Región Constructores:
+
+La región “Constructores” contiene una única función que sirve para poder instanciar los arrays que definirán y almacenarán a todos los estudiantes.
+Nota: Los detalles de la función presentada podrán encontrarse en la descripción de la región “Métodos” dentro de la subregión “Inicialización de valores iniciales para casos de prueba y para su uso.”
+
+Región Ingreso Estudiantes:
+ 
+ 
+
+La región “Ingreso Estudiantes” contiene la parte de código en la cual se ingresan todos los estudiantes que se desean al registro de información, además, dentro de esta región se presentan distintos puntos de interés tales como:
+	Línea 47 y línea 112: Ambas líneas definen a un do-while que encapsula a la parte del código que solicita al usuario el ingreso de los estudiantes permitiendo que una vez ingresado uno, si se desea, se pueda ingresar otro sucesivamente hasta que el propio usuario decida parar, en cuyo caso, se ejecuta la línea 108 y se sale automáticamente del loop do-while.
+	Líneas 53, 68 y 83: En estas líneas de código se presentan las declaraciones de while(true), es decir, en esencia loops infinitos, esto, con el fin de poder realizar validaciones try-catch constantes evaluando y permitiendo el ingreso de nueva información en caso de encontrarse con algún posible error por parte del usuario, para ello se acude a las líneas 63, 78 y 93 respectivamente donde se procede a un continue a continuación de la impresión de un error permitiendo que el usuario puedo ingresar nuevamente el valor erróneo; por otra parte, si no hubiera error alguno se acudiría a las líneas 64, 79 y 94 donde se encuentra un break con el objetivo de finalizar el loop infinito y seguir a la siguiente etapa del programa.
+	Líneas 57, 72 y 87: En estas líneas de código se presentan declaraciones de do-while con el fin de poder validar que el ingreso de tanto las notas como la asistencia pertenezcan al rango requerido, es decir, en el caso de que se ingrese un dato superior o inferior al rango establecido, se ejecutaran las líneas 60, 75 y 90 las cuales imprimirán un error al usuario y luego se procederá a repetirse la solicitud de ingreso de información de la sección.
+	Línea 98: En esta línea de código se realiza el llamamiento a la función que establecerá los valores temporales recopilados como un estudiante, es decir, en esta línea se crea el estudiante.
+Nota: Los detalles de la función presentada podrán encontrarse en la descripción de la región “Métodos” dentro de la subregión “Inicialización de valores iniciales para casos de prueba y para su uso.”
+	Línea 101 a 105: El código presente en el rango de líneas pregunta al usuario si desea ingresar un nuevo estudiante, sin embargo, aparte de ello también realiza una validación en caso de que se ingrese una opción diferente de “S” o “N”.
+	Línea 111: Esta línea permitirá que la pantalla de consola cambie de color de manera aleatoria cada que un estudiante nuevo se ingrese.
+Nota: Los detalles de la función presentada podrán encontrarse en la descripción de la región “Métodos” dentro de la subregión “Funciones para ambiente amigable con el usuario.”
+	Línea 115: El llamamiento de esta función permite evaluar de todo el registro que estudiantes reprobaron o aprobaron el curso devolviendo true y false respectivamente.
+Nota: Los detalles de la función presentada podrán encontrarse en la descripción de la región “Métodos” dentro de la subregión “Funciones Avanzadas”.
+	Línea 118: Esta línea permite que sea el color aleatorio que se establezca durante el ingreso de estudiantes se inicialice y se presente la clásica pantalla negra con letra blanca con el fin de poder dar una mejor presentación de la información a continuación.
+Región Menú de desplegué de información:
+ 
+ 
+
+La región “Menú de desplegué de información” contiene el menú de opciones del cual el usuario podrá seleccionar el cómo el desea que el registro de estudiantes se presente, es decir, en esta etapa del programa el usuario llamara a distintas funciones de ordenamiento de los estudiantes dependiendo de la opción que seleccione. Entre lo más relevante se encuentra:
+Línea 125: Declara un while haciendo todo el interior del bloque de código (el menú de opciones) se repita mientras se cumpla la condición evaluando la opción que se ingresará en la línea 130 y será evaluada en el switch a continuación.
+Línea 133 a 143: El presente rango de líneas realiza un llamamiento de la función que permite ordenar el registro de estudiantes por nombre de manera ascendente seguido de su respectiva impresión.
+Nota: Los detalles de la función presentada podrán encontrarse en la descripción de la región “Métodos” dentro de la subregión “Ordenamiento de los datos del estudiante”.
+Línea 145 a 155: El presente rango de líneas realiza un llamamiento de la función que permite ordenar el registro de estudiantes por apellido de manera descendente seguido de su respectiva impresión.
+Nota: Los detalles de la función presentada podrán encontrarse en la descripción de la región “Métodos” dentro de la subregión “Ordenamiento de los datos del estudiante”.
+Línea 157 a 167: El presente rango de líneas realiza un llamamiento de la función que permite ordenar el registro de estudiantes por nota de la prueba de manera ascendente seguido de su respectiva impresión.
+Nota: Los detalles de la función presentada podrán encontrarse en la descripción de la región “Métodos” dentro de la subregión “Ordenamiento de los datos del estudiante”.
+Línea 169 a 179: El presente rango de líneas realiza un llamamiento de la función que permite ordenar el registro de estudiantes por notas del examen de manera descendente seguido de su respectiva impresión.
+Nota: Los detalles de la función presentada podrán encontrarse en la descripción de la región “Métodos” dentro de la subregión “Ordenamiento de los datos del estudiante”.
+	Línea 182 a 187: El presente rango de líneas se encarga de realizar la despedida del programa, es decir, cierra el programa de una manera amigable con el usuario llamando a una función que hace la ilusión de que se esta procesando información y finalmente presenta un “Presione cualquier tecla para salir…” dando fin al programa a su vez también porque al seleccionar esta opción deja de cumplir la condición del while.
+	Línea 189 a 194: El presente rango de líneas funciona como un verificador de que se este ingresando una opción válida, es decir, una opción dentro del rango de 1 a 5.
+	Líneas 139, 151, 163, 175: La función que se llama en cada una de las presentas líneas de código permiten la visualización del registro de estudiantes de manera en la que fue ordenada.
+Nota: Los detalles de la función presentada podrán encontrarse en la descripción de la región “Métodos” dentro de la subregión “Impresión de los estudiantes”.
+
+Detalles de la Región Métodos:
+ 
+
+Región Inicialización de valores iniciales para casos de prueba y para su uso:
+
+Las funciones dentro de la región permiten la inicialización e instanciación de los arrays donde se irán progresivamente guardando los estudiantes.
+Línea 207 y 219: Se declara una sobrecarga de funciones para inicializar los datos del estudiante.
+Línea 207 a 216: La función establecida dentro del rango de las líneas, realiza la instanciación de los arrays que, al ser pasados por referencia, se logra alterar directamente los arrays principales donde se guardaran progresivamente los estudiantes con un espacio de memoria definido por el parámetro maxEstudiantes en el que, si se desea aumentar o reducir la capacidad de estudiantes, solo se tendrá que alterar el envió de aquel parámetro. (Actualmente fue enviado con un valor de 1000).
+Línea 219 a 228: La función establecida dentro del rango de líneas permite que los valores que se recolectan en la región “Ingreso Estudiantes” puedan ser considerados como un estudiante registrado al ser inicializados en una posición definida por el parámetro por referencia “posEstu” en todos los arrays también pasados por referencia.
+Línea 225: Establece dentro del parámetro array por referencia “promedioEstudiante” en la posición definida por el parámetro “posEstu”, el cálculo del promedio de la nota de la prueba y del examen directamente.
+
+Región Funciones Avanzadas:
+ 
+ 
+Las funciones en la región “Funciones Avanzadas” permiten obtener los valores finales para el análisis del resultado de aprobación, promedio general del curso y su desviación estándar.
+Función resultado:
+	Evalúa las condiciones de aprobación de acuerdo a los datos del estudiante tanto del promedio como de su asistencia y devuelve “true” si el estudiante aprobó o “false” si reprobó añadiendo esta información al array booleano pasado por referencia “aprobacionEstudiante”.
+Función promediogeneral:
+	La función evalúa el promedio general de todo el cuso y devuelve el resultado por un return.
+Función desviacionestandar:
+	La función evalua la desviación estandar de las notas del curso y devuelve el resultado por un return.
+
+Región Ordenamiento de los datos del estudiante:
+
+La región “Ordenamiento de los datos del estudiante” contiene 4 funciones que permiten el ordenamiento del registro de los estudiantes de acuerdo con lo solicitado por la facultad.
+	Línea 291 a 340: Trata de la función que permite el ordenamiento de manera ascendente guiada por el nombre por el método “Bubble sort”, sin embargo, diferente, en este caso se evaluará únicamente el nombre, pero se procederá a realizar el intercambio de posición de todos los datos del estudiante ya que todos ellos conforman a un mismo objeto y si es que a este se cambia de posición al nombre, se deberá también cambiar de posición su apellido, notas, etc.
+	Línea 243 a 393: Trata de la función que permite el ordenamiento de manera descendente guiada por el apellido por el método “Bubble sort”, sin embargo, diferente, en este caso se evaluará únicamente el apellido, pero se procederá a realizar el intercambio de posición de todos los datos del estudiante ya que todos ellos conforman a un mismo objeto y si es que a este se cambia de posición al apellido, se deberá también cambiar de posición su nombre, notas, etc.
+	Línea 395 a 436: Trata de la función que permite el ordenamiento de manera ascendente guiada por la nota de la prueba por el método “Bubble sort”, sin embargo, diferente, en este caso se evaluará únicamente la nota de la prueba, pero se procederá a realizar el intercambio de posición de todos los datos del estudiante ya que todos ellos conforman a un mismo objeto y si es que a este se cambia de posición de la nota de la prueba, se deberá también cambiar de posición su nombre, apellido, etc.
+	Línea 439 a 480: Trata de la función que permite el ordenamiento de manera descendente guiada por la nota del examen por el método “Bubble sort”, sin embargo, diferente, en este caso se evaluará únicamente la nota del examen, pero se procederá a realizar el intercambio de posición de todos los datos del estudiante ya que todos ellos conforman a un mismo objeto y si es que a este se cambia de posición de la nota del examen, se deberá también cambiar de posición su nombre, apellido, etc.
+
+Región Impresión de los estudiantes:
+ 
+
+ La región “Impresión de los datos del estudiante” contiene le método que permite la impresión de todos los datos de los estudiantes dentro del registro en un formato tipo tabla respetando todo tipo de tabulación.
+	Línea 489: Se declara una variable “temp” que procederá a inicializarse como “APROBADO” o “REPROBADO” dependiendo si el array booleano con los datos de registro de aprobación es true o es false. Esta acción se puede percibir en las líneas 529 y 530.
+	Línea 490: Se declaran dos variables, “counterX” y counterY” que permitirán establecer la posición del cursor tanto en el eje x como en el y, para que así se pueda permanecer una tabulación determinada y que se presente la tabla en un formato bien hecho.
+	Línea 492 a 521: Imprime el encabezado de la tabla siguiendo el siguiente formato: 
+•	Línea 496 y 497: Evalúa si la palabra “Nombre” es más grande que el mas largo nombre de todos los estudiantes dada por la función “Mayor”, si es así, la variable “counterX” es inicializa con el tamaño de la palabra “Nombre” mas 8, pero, si algún nombre de algún estudiante super el largo de “Nombre” entonces, “counterX” se inicializara con su tamaña más 8. Luego, se procede con la impresión de “Nombre”.
+•	Línea 500: Coloca el cursor en la posición “counterX” en el eje x y en la posición “counterY” en el eje y con el fin de realizar una tabulación determinada que no se pueda quebrantar.
+•	Línea 501 y 502: Realiza la misma acción que las líneas 496 y 497 pero evaluando “Apellido” con el apellido más largo de algún estudiante, y, dado el resultado, este se suma su largo al valor ya establecido de “counterX” mas 8. Luego, se imprime “Apellido”.
+•	Líneas 504, 507, 510, 513, 516: Realizan la misma función que la línea 500 pero con el valor sumado de counterX.
+•	Líneas 505, 508, 511, 514: Suman el valor establecido en “counterX” las palabras identificadoras del encabezado como: “Prueba”, “Examen”, “Promedio”, etc.…
+•	Línea 519: Suma en uno “counterY” para establecer que se añade una línea en el eje y.
+Línea 523 a 560: Imprime el registro de los estudiantes en un formato tipo tabla siguiendo el siguiente formato:
+•	Línea 526: Establece un for que itere la cantidad de estudiantes registrados para la impresión de todos.
+•	Línea 528: Llama a una función que pinta un línea blanca o negra de acuerdo con los parámetros que recibe, esto, con el fin de que se aprecie de mejor manera el registro de los estudiantes.
+ Nota: En la región Funciones para ambiente amigable con el usuario, se detalla su función.
+•	Línea 534 a 557: Realizan las mismas funciones que la impresión del encabezado, sin embargo, esta vez imprime el nombre, el apellido, las notas, asistencia, promedio y resultado de aprobación, es decir, el contenido.
+Línea 563 y 564: Devuelven el color en pantalla y de las letras a la normalidad tras ser alterados para una mejor visualización del registro y el resto del programa.
+Línea 567 y 568: Imprimen el promedio general del curso y su desviación estándar por debajo de la tabla.
+
+Región Funciones para ambiente amigable con el usuario:
+ 
+ 
+Función Procesando: 
+	Realiza la impresión de una pirámide con el fin de simular que el programa está procesando información.
+Función Mayor:
+	Devuelve el largo del nombre o apellido mas largo de todo el registro de estudiantes.
+Función LineaPintada:
+	Realiza el pintado de una línea de color blanco o negro cambiando el color de la letra dependiendo del parámetro “p_index”, si este es par, la línea es pintada de gris y la letra de negro; por otra parte, si es impar la línea se pinta de negro y la letra de blanco.
+Función PantallaPintada:
+	Pinta la pantalla de un color aleatorio cuando se llama a la función, requiere que se inicialice la pantalla actual para que se ejecuten los cambios. (Console.Clear()).
+
+Ejecución del Código
+Ingreso de estudiantes:
+ 
+ 
+ 
+Menú de opciones:
+ 
+Opción 1: Ordenamiento por nombre en forma ascendente.
+ 
+Opción 2: Ordenamiento por apellido en forma descendente.
+ 
+Opción 3: Ordenamiento por nota de la prueba en forma ascendente.
+ 
+Opción 4: Ordenamiento por nota del examen en forma descendente.
+ 
+Salida del programa:
+ 
+
+Conclusiones y Recomendaciones
+Conclusiones:
+1.	En códigos complejos y de larga extensión se concluye que las funciones son de gran ayuda en la optimización y ordenamiento de operaciones deseadas a realizar, teniendo así un mejor orden y entendimiento para el programador.
+2.	La influencia de plataformas en línea que sirven de gran ayuda para la interacción y aportación entre estudiantes que desarrollan un mismo fin. Concluyendo una interacción optima entre estudiantes para complementar el mismo código.
+3.	El programador tiene que ser altamente cuidadoso para evitar errores que eviten el proceso de ejecución completo del código creando excepciones para excluir el error tratar de solucionarlo y continuar con el código.
+4.	Los comandos son de gran ayuda para realizar operaciones en líneas más cortas o mejor aún en menos líneas, evitando el proceso de operación, y haciéndolo un código óptimo con el uso de comandos teniendo su respuesta directamente.
+5.	El uso de arrays es de gran ayuda a la magnitud de datos que se pueden utilizar y las operaciones posibles a realizar, haciéndolo así de una manera más entendible y amigable para el programador.
+
+Recomendaciones:
+1.	Se recomienda guardar constantemente el código en múltiples espacios de guardado, teniendo así una copia de respaldo ante emergencias de información perdida o borrada.
+2.	Se recomienda comentar constantemente el código para la mejor comprensión del usuario al momento de visualizar el código en sí.
+3.	Es recomendable hacer las impresiones lo más entendible para el usuario y el público en general, que este detallado y claro para el entendimiento directo del usuario o público en general.
+4.	En el proceso de desarrollo del código es recomendable investigar comandos o formas en que te ayuden a optimizar el código para así evitar el consumo de memoria haciéndolo un código óptimo y visual de mejor manera.
+5.	En el tiempo conllevado para la ejecución del código y la investigación de su optimización, es recomendable hacer el código por partes e ir probando una por una de sus funciones. Al momento de funcionar con excelencia cada una de las partes unir cada una y probar, si sigue funcionando hacerlo hasta encontrar un error o terminar uniendo todas las partes del código teniendo así un código ejecutable perfectamente.
+
+Rúbrica de Calificación del Proyecto Final
+Requerimiento	Valor
+Programa solicita la información al usuario correctamente:	1
+Programa guarda los datos ingresados por el usuario correctamente:	1
+Programa muestra el menú solicitado correctamente:	1
+Programa ordena los registros al menos para las dos primeras opciones del menú:	2
+Programa ordena los registros para las cuatro opciones del menú:	4
+Programa convierte en mayúsculas el Apellido ingresado:	1
+Programa convierte en mayúsculas el nombre ingresado:	1
+Programa calcula y muestra correctamente el Promedio por cada estudiante:	2
+Programa muestra en un formato adecuado la tabla con los registros:	2
+Programa permite al usuario ingresar un número ilimitado de registros:	1
+Programa permite volver al menú y ordenar los registros nuevamente:	1
+Programa determina y muestra correctamente el estado de Aprobado/Reprobado:	1
+Programa implementa correctamente el método de la burbuja:	1
+Programa implementa al menos una función:	1
+Programa muestra correctamente el Promedio del curso:	1
+Programa muestra correctamente la Desviación Estándar del curso:	1
+
+
+
 
