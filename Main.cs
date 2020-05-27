@@ -280,7 +280,7 @@ namespace Proyecto_Final_Programación_Estructurada
                     }
                 }
             }
-            return result - 10.37;
+            return result - 10.49;
         }
 
         #endregion
